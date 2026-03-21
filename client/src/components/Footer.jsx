@@ -20,9 +20,9 @@ const Footer = () => {
             className='w-32 sm:w-44 cursor-pointer'
           />
           <p className='max-w-[410px] mt-6'>
-            Blogram is your trusted source for developer insights,
-            coding tutorials, and curated resources focused on
-            real-world learning.
+            Gidipost is your trusted source for tech news, software
+            development, programming, AI, gadgets, scholarships, and
+            everything in between written for tech lovers worldwide
           </p>
 
           {/* Social Links */}
@@ -97,34 +97,58 @@ const Footer = () => {
             <ul className='text-sm space-y-1'>
               <li>
                 <Link
-                  to='/?category=Development & Code'
+                  to='/?category=Tech News'
                   className='hover:underline hover:text-primary transition-all'
                 >
-                  Development & Code
+                  Tech News
                 </Link>
               </li>
               <li>
                 <Link
-                  to='/?category=AI & Tools'
+                  to='/?category=Dev/Code'
                   className='hover:underline hover:text-primary transition-all'
                 >
-                  AI & Tools
+                  Dev/Code
                 </Link>
               </li>
               <li>
                 <Link
-                  to='/?category=Resources & Assets'
+                  to='/?category=AI/Tools'
                   className='hover:underline hover:text-primary transition-all'
                 >
-                  Resources & Assets
+                  AI/Tools
                 </Link>
               </li>
               <li>
                 <Link
-                  to='/?category=Community & Trends'
+                  to='/?category=Phones/Gadgets'
                   className='hover:underline hover:text-primary transition-all'
                 >
-                  Community & Trends
+                  Phones/Gadgets
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='/?category=Scholarships/Learning'
+                  className='hover:underline hover:text-primary transition-all'
+                >
+                  Scholarships/Learning
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='/?category=Trending'
+                  className='hover:underline hover:text-primary transition-all'
+                >
+                  Trending
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to='/?category=ETs/Science'
+                  className='hover:underline hover:text-primary transition-all'
+                >
+                  ETs/Science
                 </Link>
               </li>
             </ul>
@@ -211,7 +235,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className='flex flex-col sm:flex-row items-center justify-between gap-2 py-4'>
         <p className='text-center text-sm md:text-base text-gray-500/80'>
-          Copyright © 2025 Blogram — Balogram Studio. All rights reserved.
+          Copyright © 2026 Gidipost. All rights reserved.
         </p>
         <div className='flex gap-4 text-sm text-gray-500/80'>
           <Link

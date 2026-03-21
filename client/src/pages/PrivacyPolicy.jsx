@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
             Privacy Policy
           </h1>
           <p className='text-gray-500'>
-            Last updated: March 2025
+            Last updated: March 2026
           </p>
         </div>
 
@@ -31,10 +31,7 @@ const PrivacyPolicy = () => {
             Introduction
           </h2>
           <p className='leading-relaxed'>
-            Welcome to Blogram. We are committed to protecting your 
-            personal information and your right to privacy. This Privacy 
-            Policy explains how we collect, use, and safeguard your 
-            information when you visit our website at blogram-blog-app-0-1-trt6.vercel.app
+            Welcome to Gidipost. Your privacy matters to us, and we’re committed to protecting your personal information. This Privacy Policy explains how we collect, use, and protect your data when you visit our website. Gidipost is a tech blog where we share content about software development, AI, gadgets, programming, scholarships, and more. By using our website, you agree to the terms outlined in this policy. If you do not agree with our practices, please do not use our site.
           </p>
         </div>
 
@@ -196,9 +193,9 @@ const PrivacyPolicy = () => {
             please contact us at:
           </p>
           <div className='mt-3 p-4 bg-primary/5 border border-primary/20 rounded-lg'>
-            <p><b>Blogram</b> — Balogram Studio</p>
-            <p>Email: admin@blogram.com</p>
-            <p>Website: blogram-blog-app-0-1-trt6.vercel.app</p>
+            <p><b>Gidipost</b> — Balogram Code & Canvas</p>
+            <p>Email: admin@gidipost.com</p>
+            <p>Website: gidipost.com.ng</p>
           </div>
         </div>
 
