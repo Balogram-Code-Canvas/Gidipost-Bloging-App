@@ -58,7 +58,16 @@ export const assets = {
     dashboard_icon_3,
     dashboard_icon_4,
 }
-export const blogCategories = ['All', 'Dev/Code', 'AI/Tools', 'Resources', 'Tech Trends']
+export const blogCategories = [
+  'All',
+  'Tech News',
+  'Dev/Code',
+  'AI/Tools',
+  'Phones/Gadgets',
+  'Scholarships/Learning',
+  'Trending',
+  'ETs/Science'
+]
 
 export const blog_data = [
 
