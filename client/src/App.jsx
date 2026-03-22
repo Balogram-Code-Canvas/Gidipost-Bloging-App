@@ -13,6 +13,10 @@ import Contact from './pages/Contact'
 import 'quill/dist/quill.snow.css'
 import { Toaster } from 'react-hot-toast'
 import { useAppContext } from './context/AppContext'
+import About from './pages/About'
+import ScrollToTop from './components/ScrollToTop'
+import './styles/richtext.css'
+import 'quill/dist/quill.snow.css'
 
 const App = () => {
 
@@ -21,6 +25,7 @@ const App = () => {
   return (
     <div>
       <Toaster />
+      <ScrollToTop />
       <Routes>
 
         {/* Public Routes */}
@@ -28,6 +33,7 @@ const App = () => {
         <Route path='/blog/:id' element={<Blog />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/about' element={<About />} />
 
         {/* Admin Routes */}
         <Route path='/admin' element={token ? <Layout /> : <Login />}>

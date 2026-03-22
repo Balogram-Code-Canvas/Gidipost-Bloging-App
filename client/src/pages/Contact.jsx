@@ -84,7 +84,7 @@ const Contact = () => {
           <div className='text-center p-6 bg-primary/5 border border-primary/20 rounded-lg'>
             <p className='text-2xl mb-2'>🏢</p>
             <p className='font-semibold text-gray-800 mb-1'>Company</p>
-            <p className='text-sm'>Balogram Code&Canvas</p>
+            <p className='text-sm'>Gidipost News Hub</p>
           </div>
         </div>
 
@@ -168,20 +168,20 @@ const Contact = () => {
           </p>
           <div className='flex justify-center gap-4'>
             <a
-              href='https://github.com/Balogram-dev'
+              href='/https://www.instagram.com/gidipost'
               target='_blank'
               rel='noreferrer'
               className='px-5 py-2 border border-gray-300 rounded-full text-sm hover:border-primary hover:text-primary transition-all'
             >
-              GitHub
+              Instagram
             </a>
             <a
-              href='https://www.linkedin.com/in/babatunde-agboke'
+              href='/https://www.facebook.com/gidipost'
               target='_blank'
               rel='noreferrer'
               className='px-5 py-2 border border-gray-300 rounded-full text-sm hover:border-primary hover:text-primary transition-all'
             >
-              LinkedIn
+              Facebook
             </a>
             <a
               href='https://wa.me/+2348140956485'

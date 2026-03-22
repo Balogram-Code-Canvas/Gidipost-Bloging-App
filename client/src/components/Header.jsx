@@ -25,7 +25,7 @@ const Header = () => {
 
         <div className='inline-flex items-center justify-center gap-4 px-6 py-1.5 mb-4 border border-primary/40 bg-primary/10 rounded-full  text-sm text-primary'>
           <p>A place for people who love tech</p>
-          <img src={assets.star_icon} className='w-2.5' alt="star icon" />
+          <img src={assets.star_icon} className='w-4.5' alt="star icon" />
         </div>
 
         <h1 className='text-2xl sm:text-5xl font-semibold sm:leading-16 text-gray-700'>
