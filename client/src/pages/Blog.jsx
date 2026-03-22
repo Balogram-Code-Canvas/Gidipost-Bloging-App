@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import Loader from '../components/Loader'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
+import '../styles/richtext.css'
 
 const Blog = () => {
 
@@ -85,9 +86,10 @@ const Blog = () => {
         <h1 className='text-2xl sm:text-5xl font-semibold max-w-2xl mx-auto text-gray-800'>
           {data.title}
         </h1>
-        <h2 className='my-5 max-w-lg truncate mx-auto'>{data.subTitle}</h2>
+        
+        <h2 className='my-5 max-w-lg mx-auto text-center'>{data.subTitle}</h2>
         <p className='inline-block py-1 px-4 rounded-full mb-6 border text-sm border-primary/35 bg-primary/5 font-medium text-primary'>
-          Babatunde Agboke
+          Gidipost Admin
         </p>
       </div>
 

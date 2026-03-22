@@ -7,9 +7,9 @@ const Footer = () => {
   const navigate = useNavigate()
 
   return (
-    <div className='px-6 md:px-16 lg:px-24 xl:px-32 bg-primary/3'>
+    <div className='px-6 md:px-16 lg:px-24 xl:px-32 bg-primary/4'>
 
-      <div className='flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-500/30 text-gray-500'>
+      <div className='flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-gray-600/30 text-gray-600'>
 
         {/* Logo & Description */}
         <div>
@@ -73,12 +73,12 @@ const Footer = () => {
             <ul className='text-sm space-y-1'>
               <li>
                 <Link to='/' className='hover:underline hover:text-primary transition-all'>
-                  Home
+                  Blog
                 </Link>
               </li>
               <li>
-                <Link to='/' className='hover:underline hover:text-primary transition-all'>
-                  Blog
+                <Link to='/about' className='hover:underline hover:text-primary transition-all'>
+                  About Us
                 </Link>
               </li>
               <li>
@@ -202,32 +202,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className='font-semibold text-base text-gray-900 md:mb-5 mb-2'>
-              Legal
-            </h3>
-            <ul className='text-sm space-y-1'>
-              <li>
-                <Link
-                  to='/privacy-policy'
-                  className='hover:underline hover:text-primary transition-all'
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='/contact'
-                  className='hover:underline hover:text-primary transition-all'
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
+          
         </div>
 
       </div>
@@ -235,7 +210,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className='flex flex-col sm:flex-row items-center justify-between gap-2 py-4'>
         <p className='text-center text-sm md:text-base text-gray-500/80'>
-          Copyright © 2026 Gidipost. All rights reserved.
+          Copyright © 2025 Gidipost — Balogram Studio. All rights reserved.
         </p>
         <div className='flex gap-4 text-sm text-gray-500/80'>
           <Link
@@ -250,6 +225,14 @@ const Footer = () => {
             className='hover:text-primary transition-all'
           >
             Contact
+          </Link>
+          <span>•</span>
+          {/* Hidden admin link - very subtle */}
+          <Link
+            to='/admin'
+            className='hover:text-primary transition-all opacity-20 hover:opacity-100'
+          >
+            Admin
           </Link>
         </div>
       </div>

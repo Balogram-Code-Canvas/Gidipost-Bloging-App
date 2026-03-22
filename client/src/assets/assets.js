@@ -262,10 +262,10 @@ export const footer_data = [
     },
     {
         title: "Categories",
-        links: ["Development & Code", "AI & Tools", "Resources & Assets", "Community & Trends"]
+        links: ["Tech News", "Dev/Code", "AI/Tools", "Phones/Gadgets", "Scholarships/Learning", "Trending", "ETs/Science"]
     },
     {
         title: "Follow Us",
-        links: ["GitHub", "LinkedIn", "Twitter/X", "YouTube"]
+        links: ["Twitter/X", "YouTube"]
     }
 ];

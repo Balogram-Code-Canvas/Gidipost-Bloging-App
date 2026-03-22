@@ -77,6 +77,7 @@ const AddBlog = () => {
       }
   },[])
 
+  
 
   return (
     <form onSubmit={onSubmitHandler} className='flex-1 bg-blue-50/50 text-gray-600 h-full overflow-scroll'>
@@ -124,6 +125,30 @@ const AddBlog = () => {
       </div>
     </form>
   )
+}
+
+const onSubmitHandler = async (e) => {
+  e.preventDefault()
+  try {
+    // Get Quill content and clean up extra spacing
+    const content = quillRef.current.root.innerHTML
+    const cleanContent = content
+      .replace(/<p><br><\/p>/g, '')     // Remove empty paragraphs
+      .replace(/&nbsp;/g, ' ')           // Replace non-breaking spaces
+      .trim()
+
+    const blogData = {
+      title,
+      subTitle,
+      description: cleanContent,
+      category,
+      isPublished,
+    }
+
+    // rest of your submit code
+  } catch (error) {
+    toast.error(error.message)
+  }
 }
 
 export default AddBlog
