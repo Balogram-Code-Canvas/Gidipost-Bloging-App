@@ -1,5 +1,5 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Blog from './pages/Blog'
 import Layout from './pages/admin/Layout'
@@ -10,17 +10,23 @@ import Comments from './pages/admin/Comments'
 import Login from './components/admin/Login'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Contact from './pages/Contact'
-import 'quill/dist/quill.snow.css'
-import { Toaster } from 'react-hot-toast'
-import { useAppContext } from './context/AppContext'
 import About from './pages/About'
 import ScrollToTop from './components/ScrollToTop'
-import './styles/richtext.css'
+import { Toaster } from 'react-hot-toast'
+import { useAppContext } from './context/AppContext'
+import { trackPageView } from './analytics'
 import 'quill/dist/quill.snow.css'
+import './styles/richtext.css'
 
 const App = () => {
 
   const { token } = useAppContext()
+  const location = useLocation()
+
+  // Track page views on every route change
+  useEffect(() => {
+    trackPageView(location.pathname)
+  }, [location])
 
   return (
     <div>
