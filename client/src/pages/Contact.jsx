@@ -4,6 +4,7 @@ import Footer from '../components/Footer'
 import { assets } from '../assets/assets'
 import toast from 'react-hot-toast'
 import emailjs from '@emailjs/browser'
+import SEO from '../components/SEO'
 
 const Contact = () => {
 
@@ -20,10 +21,10 @@ const Contact = () => {
     setLoading(true)
 
     emailjs.sendForm(
-      'service_opx26vh',       // ✅ Replace with your EmailJS Service ID
-      'template_23r9z1p',      // ✅ Replace with your EmailJS Template ID
+      'service_opx26vh',
+      'template_23r9z1p',
       formRef.current,
-      'C8cwddSj8v-fXWgH2'        // ✅ Replace with your EmailJS Public Key
+      'C8cwddSj8v-fXWgH2'
     )
     .then(() => {
       toast.success('Message sent successfully! We will get back to you soon.')
@@ -42,6 +43,13 @@ const Contact = () => {
 
   return (
     <div className='relative'>
+
+      {/* ✅ SEO moved inside return */}
+      <SEO
+        title='Contact Us'
+        description='Get in touch with the Gidipost team. We would love to hear from you.'
+      />
+
       <img
         src={assets.gradientBackground}
         alt=""
@@ -71,8 +79,9 @@ const Contact = () => {
             <p className='font-semibold text-gray-800 mb-1'>Email</p>
             <p className='text-sm'>tunde.agboke@gmail.com</p>
           </div>
+          
           <a
-            href='https://wa.me/+2348140956485'
+            href='https://wa.me/2348140956485'
             target='_blank'
             rel='noreferrer'
             className='text-center p-6 bg-primary/5 border border-primary/20 rounded-lg hover:border-primary hover:scale-105 transition-all cursor-pointer block'
@@ -94,7 +103,6 @@ const Contact = () => {
             Send us a Message
           </h2>
 
-          {/* ✅ Added ref to form */}
           <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col gap-5'>
 
             <div className='flex flex-col sm:flex-row gap-5'>
@@ -168,7 +176,7 @@ const Contact = () => {
           </p>
           <div className='flex justify-center gap-4'>
             <a
-              href='/https://www.instagram.com/gidipost'
+              href='https://www.instagram.com/gidipost'
               target='_blank'
               rel='noreferrer'
               className='px-5 py-2 border border-gray-300 rounded-full text-sm hover:border-primary hover:text-primary transition-all'
@@ -176,7 +184,7 @@ const Contact = () => {
               Instagram
             </a>
             <a
-              href='/https://www.facebook.com/gidipost'
+              href='https://www.facebook.com/gidipost'
               target='_blank'
               rel='noreferrer'
               className='px-5 py-2 border border-gray-300 rounded-full text-sm hover:border-primary hover:text-primary transition-all'
@@ -184,7 +192,7 @@ const Contact = () => {
               Facebook
             </a>
             <a
-              href='https://wa.me/+2348140956485'
+              href='https://wa.me/2348140956485'
               target='_blank'
               rel='noreferrer'
               className='px-5 py-2 border border-gray-300 rounded-full text-sm hover:border-primary hover:text-primary transition-all'

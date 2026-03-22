@@ -8,6 +8,7 @@ import Loader from '../components/Loader'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
 import '../styles/richtext.css'
+import SEO from '../components/SEO'
 
 const Blog = () => {
 
@@ -41,7 +42,6 @@ const Blog = () => {
     }
   }
 
-  // ✅ Fixed - added e parameter
   const addComment = async (e) => {
     e.preventDefault()
     try {
@@ -50,12 +50,11 @@ const Blog = () => {
         name,
         content
       })
-
       if (data.success) {
         toast.success(data.message)
         setName('')
         setContent('')
-        fetchComments() // ✅ Refresh comments after submitting
+        fetchComments()
       } else {
         toast.error(data.message)
       }
@@ -71,10 +70,20 @@ const Blog = () => {
 
   return data ? (
     <div className='relative'>
-      <img 
-        src={assets.gradientBackground} 
-        alt="" 
-        className='absolute -top-[50px] -z-[1] opacity-50' 
+
+      {/* ✅ SEO - no need for extra data check since we are already inside data ? */}
+      <SEO
+        title={data.title}
+        description={data.subTitle}
+        image={data.image}
+        url={`https://gidipost-bloging-app.vercel.app/blog/${data._id}`}
+        type='article'
+      />
+
+      <img
+        src={assets.gradientBackground}
+        alt=""
+        className='absolute -top-[50px] -z-[1] opacity-50'
       />
 
       <Navbar />
@@ -86,8 +95,9 @@ const Blog = () => {
         <h1 className='text-2xl sm:text-5xl font-semibold max-w-2xl mx-auto text-gray-800'>
           {data.title}
         </h1>
-        
-        <h2 className='my-5 max-w-lg mx-auto text-center'>{data.subTitle}</h2>
+        <h2 className='my-5 max-w-lg mx-auto text-center'>
+          {data.subTitle}
+        </h2>
         <p className='inline-block py-1 px-4 rounded-full mb-6 border text-sm border-primary/35 bg-primary/5 font-medium text-primary'>
           Gidipost Admin
         </p>
@@ -96,8 +106,8 @@ const Blog = () => {
       <div className='mx-5 max-w-5xl md:mx-auto my-10 mt-6'>
         <img src={data.image} alt="blog" className='rounded-3xl mb-5' />
 
-        <div 
-          className='rich-text max-w-3xl mx-auto' 
+        <div
+          className='rich-text max-w-3xl mx-auto'
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
 
@@ -106,8 +116,8 @@ const Blog = () => {
           <p className='font-semibold mb-4'>Comments ({comments.length})</p>
           <div className='flex flex-col gap-4'>
             {comments.map((item, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className='relative bg-primary/2 border border-primary/5 max-w-xl p-4 rounded text-gray-600'
               >
                 <div className='flex items-center gap-2 mb-2'>
@@ -126,27 +136,27 @@ const Blog = () => {
         {/* Add Comment Section */}
         <div className='max-w-3xl mx-auto'>
           <p className='font-semibold mb-4'>Add your comment</p>
-          <form 
-            onSubmit={addComment} 
+          <form
+            onSubmit={addComment}
             className='flex flex-col items-start gap-4 max-w-lg'
           >
-            <input 
-              onChange={(e) => setName(e.target.value)} 
-              value={name} 
-              type="text" 
-              placeholder='Name' 
-              required 
+            <input
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              type="text"
+              placeholder='Name'
+              required
               className='w-full p-2 border border-gray-300 rounded outline-none'
             />
-            <textarea 
-              onChange={(e) => setContent(e.target.value)} 
-              value={content} 
-              placeholder='Comment' 
-              className='w-full p-2 border border-gray-300 rounded outline-none h-48' 
+            <textarea
+              onChange={(e) => setContent(e.target.value)}
+              value={content}
+              placeholder='Comment'
+              className='w-full p-2 border border-gray-300 rounded outline-none h-48'
               required
             />
-            <button 
-              type='submit' 
+            <button
+              type='submit'
               className='bg-primary text-white rounded p-2 px-8 hover:scale-105 transition-all cursor-pointer'
             >
               Submit
@@ -157,10 +167,28 @@ const Blog = () => {
         {/* Share Buttons */}
         <div className='my-24 max-w-3xl mx-auto'>
           <p className='font-semibold my-4'>Share this article on social media</p>
-          <div className='flex'>
-            <img src={assets.facebook_icon} width={50} alt="Facebook" />
-            <img src={assets.twitter_icon} width={50} alt="Twitter" />
-            <img src={assets.googleplus_icon} width={50} alt="Google Plus" />
+          <div className='flex gap-2'>
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=https://gidipost-bloging-app.vercel.app/blog/${data._id}`}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img src={assets.facebook_icon} width={50} alt="Facebook" />
+            </a>
+            <a
+              href={`https://twitter.com/intent/tweet?url=https://gidipost-bloging-app.vercel.app/blog/${data._id}&text=${data.title}`}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img src={assets.twitter_icon} width={50} alt="Twitter" />
+            </a>
+            <a
+              href={`https://wa.me/?text=${data.title} https://gidipost-bloging-app.vercel.app/blog/${data._id}`}
+              target='_blank'
+              rel='noreferrer'
+            >
+              <img src={assets.googleplus_icon} width={50} alt="Share" />
+            </a>
           </div>
         </div>
       </div>
