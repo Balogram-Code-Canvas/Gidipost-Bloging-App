@@ -2,14 +2,22 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { assets } from '../assets/assets'
+import SEO from '../components/SEO'
 
 const PrivacyPolicy = () => {
   return (
     <div className='relative'>
-      <img 
-        src={assets.gradientBackground} 
-        alt="" 
-        className='absolute -top-[50px] -z-[1] opacity-50' 
+
+      {/* ✅ SEO moved inside the return */}
+      <SEO
+        title='Privacy Policy'
+        description='Read the Gidipost privacy policy to understand how we collect and use your data.'
+      />
+
+      <img
+        src={assets.gradientBackground}
+        alt=""
+        className='absolute -top-[50px] -z-[1] opacity-50'
       />
 
       <Navbar />
@@ -31,7 +39,14 @@ const PrivacyPolicy = () => {
             Introduction
           </h2>
           <p className='leading-relaxed'>
-            Welcome to Gidipost. Your privacy matters to us, and we’re committed to protecting your personal information. This Privacy Policy explains how we collect, use, and protect your data when you visit our website. Gidipost is a tech blog where we share content about software development, AI, gadgets, programming, scholarships, and more. By using our website, you agree to the terms outlined in this policy. If you do not agree with our practices, please do not use our site.
+            Welcome to Gidipost. Your privacy matters to us, and we're 
+            committed to protecting your personal information. This Privacy 
+            Policy explains how we collect, use, and protect your data when 
+            you visit our website. Gidipost is a tech blog where we share 
+            content about software development, AI, gadgets, programming, 
+            scholarships, and more. By using our website, you agree to the 
+            terms outlined in this policy. If you do not agree with our 
+            practices, please do not use our site.
           </p>
         </div>
 
@@ -41,14 +56,14 @@ const PrivacyPolicy = () => {
             Information We Collect
           </h2>
           <p className='leading-relaxed mb-3'>
-            We collect information that you voluntarily provide to us 
+            We collect information that you voluntarily provide to us
             when you interact with our website, including:
           </p>
           <ul className='list-disc pl-6 space-y-2'>
             <li>Name and comments you submit on blog posts</li>
             <li>
-              Information automatically collected when you visit 
-              our site such as your IP address, browser type, 
+              Information automatically collected when you visit
+              our site such as your IP address, browser type,
               and pages visited
             </li>
             <li>
@@ -80,18 +95,18 @@ const PrivacyPolicy = () => {
             Advertising
           </h2>
           <p className='leading-relaxed mb-3'>
-            We use Google AdSense to display advertisements on our 
-            website. Google AdSense uses cookies to serve ads based 
-            on your prior visits to our website and other websites 
+            We use Google AdSense to display advertisements on our
+            website. Google AdSense uses cookies to serve ads based
+            on your prior visits to our website and other websites
             on the internet.
           </p>
           <p className='leading-relaxed'>
-            Google's use of advertising cookies enables it and its 
-            partners to serve ads based on your visit to our site. 
-            You may opt out of personalized advertising by visiting 
+            Google's use of advertising cookies enables it and its
+            partners to serve ads based on your visit to our site.
+            You may opt out of personalized advertising by visiting
             Google's Ads Settings at{' '}
-            <a 
-              href='https://www.google.com/settings/ads' 
+            <a
+              href='https://www.google.com/settings/ads'
               target='_blank'
               rel='noreferrer'
               className='text-primary hover:underline'
@@ -107,14 +122,14 @@ const PrivacyPolicy = () => {
             Cookies
           </h2>
           <p className='leading-relaxed mb-3'>
-            We use cookies to enhance your experience on our website. 
-            Cookies are small text files stored on your device that 
-            help us remember your preferences and understand how you 
+            We use cookies to enhance your experience on our website.
+            Cookies are small text files stored on your device that
+            help us remember your preferences and understand how you
             use our site.
           </p>
           <p className='leading-relaxed'>
-            You can choose to disable cookies through your browser 
-            settings. However, doing so may affect the functionality 
+            You can choose to disable cookies through your browser
+            settings. However, doing so may affect the functionality
             of certain features on our website.
           </p>
         </div>
@@ -128,18 +143,10 @@ const PrivacyPolicy = () => {
             Our website uses the following third party services:
           </p>
           <ul className='list-disc pl-6 space-y-2'>
-            <li>
-              <b>Google AdSense</b> — for displaying advertisements
-            </li>
-            <li>
-              <b>ImageKit</b> — for image hosting and optimization
-            </li>
-            <li>
-              <b>MongoDB Atlas</b> — for secure data storage
-            </li>
-            <li>
-              <b>Vercel</b> — for website hosting and deployment
-            </li>
+            <li><b>Google AdSense</b> — for displaying advertisements</li>
+            <li><b>ImageKit</b> — for image hosting and optimization</li>
+            <li><b>MongoDB Atlas</b> — for secure data storage</li>
+            <li><b>Vercel</b> — for website hosting and deployment</li>
           </ul>
         </div>
 
@@ -149,9 +156,9 @@ const PrivacyPolicy = () => {
             Data Security
           </h2>
           <p className='leading-relaxed'>
-            We take reasonable measures to protect your information 
-            from unauthorized access, use, or disclosure. However, 
-            no internet transmission is completely secure, and we 
+            We take reasonable measures to protect your information
+            from unauthorized access, use, or disclosure. However,
+            no internet transmission is completely secure, and we
             cannot guarantee absolute security of your data.
           </p>
         </div>
@@ -162,10 +169,10 @@ const PrivacyPolicy = () => {
             Children's Privacy
           </h2>
           <p className='leading-relaxed'>
-            Our website is not directed at children under the age 
-            of 13. We do not knowingly collect personal information 
-            from children. If you believe we have inadvertently 
-            collected information from a child, please contact us 
+            Our website is not directed at children under the age
+            of 13. We do not knowingly collect personal information
+            from children. If you believe we have inadvertently
+            collected information from a child, please contact us
             immediately.
           </p>
         </div>
@@ -176,9 +183,9 @@ const PrivacyPolicy = () => {
             Changes to This Policy
           </h2>
           <p className='leading-relaxed'>
-            We may update this Privacy Policy from time to time. 
-            We will notify you of any changes by updating the date 
-            at the top of this page. We encourage you to review 
+            We may update this Privacy Policy from time to time.
+            We will notify you of any changes by updating the date
+            at the top of this page. We encourage you to review
             this policy periodically.
           </p>
         </div>
@@ -189,12 +196,12 @@ const PrivacyPolicy = () => {
             Contact Us
           </h2>
           <p className='leading-relaxed'>
-            If you have any questions about this Privacy Policy, 
+            If you have any questions about this Privacy Policy,
             please contact us at:
           </p>
           <div className='mt-3 p-4 bg-primary/5 border border-primary/20 rounded-lg'>
             <p><b>Gidipost</b> — Balogram Code & Canvas</p>
-            <p>Email: admin@gidipost.com</p>
+            <p>Email: tunde.agboke@gmail.com</p>
             <p>Website: gidipost.com.ng</p>
           </div>
         </div>

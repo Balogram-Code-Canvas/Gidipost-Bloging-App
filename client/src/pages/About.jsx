@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { assets } from '../assets/assets'
 import { useNavigate } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 const About = () => {
 
@@ -10,6 +11,13 @@ const About = () => {
 
   return (
     <div className='relative'>
+
+      {/* ✅ SEO moved inside return */}
+      <SEO
+        title='About Us'
+        description='Learn about Gidipost — your go-to platform for everything tech. Built by Balogram Studio for tech lovers worldwide.'
+      />
+
       <img
         src={assets.gradientBackground}
         alt=""
@@ -27,8 +35,8 @@ const About = () => {
             We are <span className='text-primary'>Gidipost</span>
           </h1>
           <p className='text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed'>
-            Your go-to platform for everything tech — from software 
-            development and programming to AI, gadgets, tech news, 
+            Your go-to platform for everything tech — from software
+            development and programming to AI, gadgets, tech news,
             scholarships, and beyond.
           </p>
         </div>
@@ -41,10 +49,10 @@ const About = () => {
               Making Tech Knowledge Accessible to Everyone
             </h2>
             <p className='text-gray-500 max-w-2xl mx-auto leading-relaxed'>
-              At Gidipost, we believe that knowledge should be free and 
-              accessible to everyone. Our mission is to provide high-quality, 
-              insightful, and up-to-date tech content that empowers developers, 
-              students, and tech enthusiasts worldwide to learn, grow, and 
+              At Gidipost, we believe that knowledge should be free and
+              accessible to everyone. Our mission is to provide high-quality,
+              insightful, and up-to-date tech content that empowers developers,
+              students, and tech enthusiasts worldwide to learn, grow, and
               stay ahead in the ever-evolving world of technology.
             </p>
           </div>
@@ -65,7 +73,7 @@ const About = () => {
               <p className='text-3xl mb-4'>💻</p>
               <h3 className='font-semibold text-gray-800 mb-2'>Dev & Code</h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                Tutorials, tips, and insights on software development 
+                Tutorials, tips, and insights on software development
                 and programming languages.
               </p>
             </div>
@@ -74,7 +82,7 @@ const About = () => {
               <p className='text-3xl mb-4'>🤖</p>
               <h3 className='font-semibold text-gray-800 mb-2'>AI & Tools</h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                The latest in artificial intelligence, machine learning, 
+                The latest in artificial intelligence, machine learning,
                 and developer productivity tools.
               </p>
             </div>
@@ -83,7 +91,7 @@ const About = () => {
               <p className='text-3xl mb-4'>📱</p>
               <h3 className='font-semibold text-gray-800 mb-2'>Phones & Gadgets</h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                Reviews, news, and updates on the latest phones, 
+                Reviews, news, and updates on the latest phones,
                 gadgets, and consumer technology.
               </p>
             </div>
@@ -92,7 +100,7 @@ const About = () => {
               <p className='text-3xl mb-4'>📰</p>
               <h3 className='font-semibold text-gray-800 mb-2'>Tech News</h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                Breaking tech news, industry updates, and trending 
+                Breaking tech news, industry updates, and trending
                 stories from around the world.
               </p>
             </div>
@@ -101,7 +109,7 @@ const About = () => {
               <p className='text-3xl mb-4'>🎓</p>
               <h3 className='font-semibold text-gray-800 mb-2'>Scholarships</h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                Tech scholarships, learning opportunities, and 
+                Tech scholarships, learning opportunities, and
                 resources to help you advance your career.
               </p>
             </div>
@@ -110,7 +118,7 @@ const About = () => {
               <p className='text-3xl mb-4'>🔥</p>
               <h3 className='font-semibold text-gray-800 mb-2'>Trending</h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                The hottest topics and most talked about stories 
+                The hottest topics and most talked about stories
                 in the tech world right now.
               </p>
             </div>
@@ -119,7 +127,7 @@ const About = () => {
               <p className='text-3xl mb-4'>🛸</p>
               <h3 className='font-semibold text-gray-800 mb-2'>ETs & Science</h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                Exploring the universe, extraterrestrial discoveries, 
+                Exploring the universe, extraterrestrial discoveries,
                 and the latest in science and space.
               </p>
             </div>
@@ -128,7 +136,7 @@ const About = () => {
               <p className='text-3xl mb-4'>🌍</p>
               <h3 className='font-semibold text-gray-800 mb-2'>And More</h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                We are constantly expanding our coverage to bring 
+                We are constantly expanding our coverage to bring
                 you the best of everything tech.
               </p>
             </div>
@@ -153,7 +161,7 @@ const About = () => {
                 Quality Content
               </h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                Every post on Gidipost is carefully written and 
+                Every post on Gidipost is carefully written and
                 reviewed to ensure accuracy, clarity, and value.
               </p>
             </div>
@@ -164,7 +172,7 @@ const About = () => {
                 Always Up to Date
               </h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                We stay on top of the latest trends and news so 
+                We stay on top of the latest trends and news so
                 you never miss what matters in tech.
               </p>
             </div>
@@ -175,7 +183,7 @@ const About = () => {
                 Built for Everyone
               </h3>
               <p className='text-sm text-gray-500 leading-relaxed'>
-                Whether you are a seasoned developer or just 
+                Whether you are a seasoned developer or just
                 starting your tech journey — Gidipost is for you.
               </p>
             </div>
@@ -203,11 +211,11 @@ const About = () => {
                 Founder & Lead Developer — Balogram Studio
               </p>
               <p className='text-gray-500 leading-relaxed'>
-                Gidipost was created by Babatunde Adewale Agboke, a 
-                passionate Frontend Developer and founder of Balogram Studio. 
-                With a deep love for technology and a vision to make tech 
-                knowledge accessible to everyone worldwide, Gidipost was 
-                born as a platform where developers, students, and tech 
+                Gidipost was created by Babatunde Adewale Agboke, a
+                passionate Frontend Developer and founder of Balogram Studio.
+                With a deep love for technology and a vision to make tech
+                knowledge accessible to everyone worldwide, Gidipost was
+                born as a platform where developers, students, and tech
                 enthusiasts can come to learn, share, and grow together.
               </p>
             </div>
@@ -220,7 +228,7 @@ const About = () => {
             Ready to Explore?
           </h2>
           <p className='text-white/80 max-w-lg mx-auto mb-8'>
-            Join thousands of tech lovers who read Gidipost every day. 
+            Join thousands of tech lovers who read Gidipost every day.
             Explore our latest posts and stay ahead in the world of tech.
           </p>
           <button
