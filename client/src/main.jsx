@@ -3,11 +3,16 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { AppProvider } from './context/AppContext.jsx'
+import { initGA } from './analytics.js'
+import 'quill/dist/quill.snow.css'
+
+// Initialize Google Analytics
+initGA()
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-  <AppProvider>
-    <App />
-  </AppProvider>
-  </BrowserRouter>,
+    <AppProvider>
+      <App />
+    </AppProvider>
+  </BrowserRouter>
 )
