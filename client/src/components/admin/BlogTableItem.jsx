@@ -59,4 +59,4 @@ const BlogTableItem = ({blog, fetchBlogs, index}) => {
   )
 }
 
-export default BlogTableItem
+export default BlogTableItem;
