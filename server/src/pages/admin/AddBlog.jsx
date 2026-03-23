@@ -3,6 +3,8 @@ import { assets, blogCategories } from '../../assets/assets'
 import Quill from 'quill';
 
 
+
+
 const AddBlog = () => {
 
   const editorRef = useRef(null)
@@ -11,7 +13,7 @@ const AddBlog = () => {
   const [image, setImage] = useState(false);
   const [title, setTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
-  const [category, SetCategory] = useState('Startup');
+  const [category, SetCategory] = useState('Tech News');
   const [isPublished, SetIsPublished] = useState(false);
 
   const generateContent = async ()=>{
