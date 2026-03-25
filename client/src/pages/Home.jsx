@@ -8,7 +8,7 @@ import SEO from '../components/SEO'
 
 const Home = () => {
   return (
-    <>
+    <div className='min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300'>
       <SEO
         title='Home'
         description='Gidipost covers the latest in tech from programming and software development to AI, gadgets, news, and tech opportunities.'
@@ -18,7 +18,7 @@ const Home = () => {
       <BlogList />
       <Newsletter />
       <Footer />
-    </>
+    </div>
   )
 }
 

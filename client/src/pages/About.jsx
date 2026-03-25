@@ -10,9 +10,8 @@ const About = () => {
   const navigate = useNavigate()
 
   return (
-    <div className='relative'>
+    <div className='relative bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300'>
 
-      {/* ✅ SEO moved inside return */}
       <SEO
         title='About Us'
         description='Learn about Gidipost — your go-to platform for everything tech. Built by Balogram Studio for tech lovers worldwide.'
@@ -21,20 +20,20 @@ const About = () => {
       <img
         src={assets.gradientBackground}
         alt=""
-        className='absolute -top-[50px] -z-[1] opacity-50'
+        className='absolute -top-[50px] -z-[1] opacity-50 dark:opacity-10'
       />
 
       <Navbar />
 
-      <div className='max-w-4xl mx-auto px-5 py-20 text-gray-600'>
+      <div className='max-w-4xl mx-auto px-5 py-20 text-gray-600 dark:text-gray-400'>
 
         {/* Hero Section */}
         <div className='text-center mb-16'>
           <p className='text-primary font-medium mb-4'>About Us</p>
-          <h1 className='text-3xl sm:text-5xl font-bold text-gray-800 mb-6'>
+          <h1 className='text-3xl sm:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-6'>
             We are <span className='text-primary'>Gidipost</span>
           </h1>
-          <p className='text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed'>
+          <p className='text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed'>
             Your go-to platform for everything tech — from software
             development and programming to AI, gadgets, tech news,
             scholarships, and beyond.
@@ -42,13 +41,13 @@ const About = () => {
         </div>
 
         {/* Mission Section */}
-        <div className='bg-primary/5 border border-primary/20 rounded-2xl p-8 sm:p-12 mb-16'>
+        <div className='bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-2xl p-8 sm:p-12 mb-16'>
           <div className='text-center'>
             <p className='text-primary font-medium mb-3'>Our Mission</p>
-            <h2 className='text-2xl sm:text-3xl font-bold text-gray-800 mb-6'>
+            <h2 className='text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6'>
               Making Tech Knowledge Accessible to Everyone
             </h2>
-            <p className='text-gray-500 max-w-2xl mx-auto leading-relaxed'>
+            <p className='text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed'>
               At Gidipost, we believe that knowledge should be free and
               accessible to everyone. Our mission is to provide high-quality,
               insightful, and up-to-date tech content that empowers developers,
@@ -62,85 +61,31 @@ const About = () => {
         <div className='mb-16'>
           <div className='text-center mb-10'>
             <p className='text-primary font-medium mb-3'>What We Cover</p>
-            <h2 className='text-2xl sm:text-3xl font-bold text-gray-800'>
+            <h2 className='text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-100'>
               Everything You Need to Know About Tech
             </h2>
           </div>
 
           <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
-
-            <div className='bg-white border border-gray-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'>
-              <p className='text-3xl mb-4'>💻</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>Dev & Code</h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                Tutorials, tips, and insights on software development
-                and programming languages.
-              </p>
-            </div>
-
-            <div className='bg-white border border-gray-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'>
-              <p className='text-3xl mb-4'>🤖</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>AI & Tools</h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                The latest in artificial intelligence, machine learning,
-                and developer productivity tools.
-              </p>
-            </div>
-
-            <div className='bg-white border border-gray-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'>
-              <p className='text-3xl mb-4'>📱</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>Phones & Gadgets</h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                Reviews, news, and updates on the latest phones,
-                gadgets, and consumer technology.
-              </p>
-            </div>
-
-            <div className='bg-white border border-gray-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'>
-              <p className='text-3xl mb-4'>📰</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>Tech News</h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                Breaking tech news, industry updates, and trending
-                stories from around the world.
-              </p>
-            </div>
-
-            <div className='bg-white border border-gray-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'>
-              <p className='text-3xl mb-4'>🎓</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>Scholarships</h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                Tech scholarships, learning opportunities, and
-                resources to help you advance your career.
-              </p>
-            </div>
-
-            <div className='bg-white border border-gray-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'>
-              <p className='text-3xl mb-4'>🔥</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>Trending</h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                The hottest topics and most talked about stories
-                in the tech world right now.
-              </p>
-            </div>
-
-            <div className='bg-white border border-gray-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'>
-              <p className='text-3xl mb-4'>🛸</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>ETs & Science</h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                Exploring the universe, extraterrestrial discoveries,
-                and the latest in science and space.
-              </p>
-            </div>
-
-            <div className='bg-white border border-gray-100 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'>
-              <p className='text-3xl mb-4'>🌍</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>And More</h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                We are constantly expanding our coverage to bring
-                you the best of everything tech.
-              </p>
-            </div>
-
+            {[
+              { emoji: '💻', title: 'Dev & Code', desc: 'Tutorials, tips, and insights on software development and programming languages.' },
+              { emoji: '🤖', title: 'AI & Tools', desc: 'The latest in artificial intelligence, machine learning, and developer productivity tools.' },
+              { emoji: '📱', title: 'Phones & Gadgets', desc: 'Reviews, news, and updates on the latest phones, gadgets, and consumer technology.' },
+              { emoji: '📰', title: 'Tech News', desc: 'Breaking tech news, industry updates, and trending stories from around the world.' },
+              { emoji: '🎓', title: 'Scholarships', desc: 'Tech scholarships, learning opportunities, and resources to help you advance your career.' },
+              { emoji: '🔥', title: 'Trending', desc: 'The hottest topics and most talked about stories in the tech world right now.' },
+              { emoji: '🛸', title: 'ETs & Science', desc: 'Exploring the universe, extraterrestrial discoveries, and the latest in science and space.' },
+              { emoji: '🌍', title: 'And More', desc: 'We are constantly expanding our coverage to bring you the best of everything tech.' },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className='bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm rounded-xl p-6 hover:shadow-md hover:border-primary/30 transition-all'
+              >
+                <p className='text-3xl mb-4'>{item.emoji}</p>
+                <h3 className='font-semibold text-gray-800 dark:text-gray-100 mb-2'>{item.title}</h3>
+                <p className='text-sm text-gray-500 dark:text-gray-400 leading-relaxed'>{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -148,54 +93,31 @@ const About = () => {
         <div className='mb-16'>
           <div className='text-center mb-10'>
             <p className='text-primary font-medium mb-3'>Why Gidipost</p>
-            <h2 className='text-2xl sm:text-3xl font-bold text-gray-800'>
+            <h2 className='text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-100'>
               Why Millions of Tech Lovers Choose Us
             </h2>
           </div>
 
           <div className='grid grid-cols-1 sm:grid-cols-3 gap-6'>
-
-            <div className='text-center p-6'>
-              <p className='text-4xl mb-4'>✍🏽</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>
-                Quality Content
-              </h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                Every post on Gidipost is carefully written and
-                reviewed to ensure accuracy, clarity, and value.
-              </p>
-            </div>
-
-            <div className='text-center p-6'>
-              <p className='text-4xl mb-4'>⚡</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>
-                Always Up to Date
-              </h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                We stay on top of the latest trends and news so
-                you never miss what matters in tech.
-              </p>
-            </div>
-
-            <div className='text-center p-6'>
-              <p className='text-4xl mb-4'>🌍</p>
-              <h3 className='font-semibold text-gray-800 mb-2'>
-                Built for Everyone
-              </h3>
-              <p className='text-sm text-gray-500 leading-relaxed'>
-                Whether you are a seasoned developer or just
-                starting your tech journey — Gidipost is for you.
-              </p>
-            </div>
-
+            {[
+              { emoji: '✍🏽', title: 'Quality Content', desc: 'Every post on Gidipost is carefully written and reviewed to ensure accuracy, clarity, and value.' },
+              { emoji: '⚡', title: 'Always Up to Date', desc: 'We stay on top of the latest trends and news so you never miss what matters in tech.' },
+              { emoji: '🌍', title: 'Built for Everyone', desc: 'Whether you are a seasoned developer or just starting your tech journey — Gidipost is for you.' },
+            ].map((item, index) => (
+              <div key={index} className='text-center p-6'>
+                <p className='text-4xl mb-4'>{item.emoji}</p>
+                <h3 className='font-semibold text-gray-800 dark:text-gray-100 mb-2'>{item.title}</h3>
+                <p className='text-sm text-gray-500 dark:text-gray-400 leading-relaxed'>{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* About the Founder */}
-        <div className='bg-white border border-gray-100 shadow-sm rounded-2xl p-8 sm:p-12 mb-16'>
+        <div className='bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm rounded-2xl p-8 sm:p-12 mb-16'>
           <div className='text-center mb-8'>
             <p className='text-primary font-medium mb-3'>The Team</p>
-            <h2 className='text-2xl sm:text-3xl font-bold text-gray-800'>
+            <h2 className='text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-100'>
               Built by Developers for Tech Lovers
             </h2>
           </div>
@@ -204,13 +126,13 @@ const About = () => {
               👨🏽‍💻
             </div>
             <div>
-              <h3 className='text-xl font-bold text-gray-800 mb-1'>
+              <h3 className='text-xl font-bold text-gray-800 dark:text-gray-100 mb-1'>
                 Babatunde Adewale Agboke
               </h3>
               <p className='text-primary text-sm font-medium mb-3'>
                 Founder & Lead Developer — Balogram Studio
               </p>
-              <p className='text-gray-500 leading-relaxed'>
+              <p className='text-gray-500 dark:text-gray-400 leading-relaxed'>
                 Gidipost was created by Babatunde Adewale Agboke, a
                 passionate Frontend Developer and founder of Balogram Studio.
                 With a deep love for technology and a vision to make tech

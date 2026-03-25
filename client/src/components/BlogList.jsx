@@ -29,7 +29,7 @@ const BlogList = () => {
           <div key={item} className='relative'>
             <button
               onClick={() => setMenu(item)}
-              className={`cursor-pointer text-gray-500 ${menu === item && 'text-white px-4 pt-0.5'}`}
+              className={`cursor-pointer text-gray-500 dark:text-gray-400 ${menu === item && 'text-white dark:text-white px-4 pt-0.5'}`}
             >
               {item}
               {menu === item && (
@@ -48,7 +48,7 @@ const BlogList = () => {
       <div className='sm:hidden my-6 mx-4 relative'>
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
-          className='w-full flex items-center justify-between px-4 py-3 bg-white border border-gray-300 rounded-lg text-sm text-gray-600 shadow-sm'
+          className='w-full flex items-center justify-between px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-sm text-gray-600 dark:text-gray-300 shadow-sm'
         >
           <div className='flex items-center gap-2'>
             <span>📂</span>
@@ -63,7 +63,7 @@ const BlogList = () => {
 
         {/* Dropdown Menu */}
         {dropdownOpen && (
-          <div className='absolute left-0 right-0 top-[52px] bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden'>
+          <div className='absolute left-0 right-0 top-[52px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 overflow-hidden'>
             {blogCategories.map((item) => (
               <button
                 key={item}
@@ -71,10 +71,10 @@ const BlogList = () => {
                   setMenu(item)
                   setDropdownOpen(false)
                 }}
-                className={`w-full text-left px-4 py-3 text-sm transition-all border-b border-gray-100 last:border-none
+                className={`w-full text-left px-4 py-3 text-sm transition-all border-b border-gray-100 dark:border-gray-700 last:border-none
                   ${menu === item
                     ? 'bg-primary/10 text-primary font-medium'
-                    : 'text-gray-600 hover:bg-gray-50'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
               >
                 <div className='flex items-center justify-between'>
