@@ -256,3 +256,72 @@
 .dark .rich-text table tr:nth-child(even) {
   background-color: #1e293b;
 }
+
+
+
+
+/* ===== CODE BLOCK WRAPPER ===== */
+.code-block-wrapper {
+  position: relative;
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #2d2d2d;
+}
+
+/* Code block header bar */
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background-color: #1e1e2e;
+  border-bottom: 1px solid #2d2d2d;
+}
+
+/* Language label */
+.code-lang {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-family: monospace;
+  text-transform: lowercase;
+}
+
+/* Copy button */
+.copy-btn {
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  background-color: #374151;
+  color: #e2e8f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: monospace;
+}
+
+.copy-btn:hover {
+  background-color: #4b5563;
+  color: #ffffff;
+}
+
+/* Copied state */
+.copy-btn.copied {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* Override pre styles inside wrapper */
+.code-block-wrapper pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* Highlight.js overrides */
+.rich-text pre code.hljs {
+  padding: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+}

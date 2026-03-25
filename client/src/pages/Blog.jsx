@@ -9,6 +9,8 @@ import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
 import '../styles/richtext.css'
 import SEO from '../components/SEO'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/github-dark.css'
 
 const Blog = () => {
 
@@ -63,10 +65,73 @@ const Blog = () => {
     }
   }
 
+  // ✅ Apply syntax highlighting and add copy buttons
+  const applyHighlighting = () => {
+    // Find all code blocks
+    const codeBlocks = document.querySelectorAll('.rich-text pre code')
+
+    codeBlocks.forEach((block) => {
+      // Apply highlight.js
+      hljs.highlightElement(block)
+
+      const pre = block.parentElement
+
+      // Avoid adding duplicate copy buttons
+      if (pre.querySelector('.copy-btn')) return
+
+      // Create copy button
+      const button = document.createElement('button')
+      button.innerText = 'Copy'
+      button.className = 'copy-btn'
+
+      button.addEventListener('click', () => {
+        navigator.clipboard.writeText(block.innerText).then(() => {
+          button.innerText = 'Copied!'
+          button.classList.add('copied')
+          setTimeout(() => {
+            button.innerText = 'Copy'
+            button.classList.remove('copied')
+          }, 2000)
+        })
+      })
+
+      // Wrap pre in a container
+      const wrapper = document.createElement('div')
+      wrapper.className = 'code-block-wrapper'
+
+      // Create header bar
+      const header = document.createElement('div')
+      header.className = 'code-block-header'
+
+      // Get language from highlight.js
+      const language = block.result?.language || 'code'
+      const langLabel = document.createElement('span')
+      langLabel.className = 'code-lang'
+      langLabel.innerText = language
+
+      header.appendChild(langLabel)
+      header.appendChild(button)
+
+      pre.parentNode.insertBefore(wrapper, pre)
+      wrapper.appendChild(header)
+      wrapper.appendChild(pre)
+    })
+  }
+
   useEffect(() => {
     fetchBlogData()
     fetchComments()
   }, [id])
+
+  // ✅ Run highlighting after blog data loads
+  useEffect(() => {
+    if (data) {
+      // Small delay to ensure DOM is updated
+      setTimeout(() => {
+        applyHighlighting()
+      }, 100)
+    }
+  }, [data])
 
   return data ? (
     <div className='relative bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300'>
