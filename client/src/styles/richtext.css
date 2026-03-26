@@ -263,10 +263,11 @@
 /* ===== CODE BLOCK WRAPPER ===== */
 .code-block-wrapper {
   position: relative;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #2d2d2d;
+  background-color: #282c34;
 }
 
 /* Code block header bar */
@@ -275,25 +276,26 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 16px;
-  background-color: #1e1e2e;
+  background-color: #21252b;
   border-bottom: 1px solid #2d2d2d;
 }
 
 /* Language label */
 .code-lang {
-  font-size: 0.75rem;
-  color: #94a3b8;
+  font-size: 0.72rem;
+  color: #abb2bf;
   font-family: monospace;
-  text-transform: lowercase;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 /* Copy button */
 .copy-btn {
   font-size: 0.7rem;
-  padding: 3px 10px;
-  background-color: #374151;
-  color: #e2e8f0;
-  border: none;
+  padding: 3px 12px;
+  background-color: #3e4451;
+  color: #abb2bf;
+  border: 1px solid #4b5263;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -301,14 +303,16 @@
 }
 
 .copy-btn:hover {
-  background-color: #4b5563;
+  background-color: #528bff;
   color: #ffffff;
+  border-color: #528bff;
 }
 
 /* Copied state */
 .copy-btn.copied {
-  background-color: #059669;
-  color: #ffffff;
+  background-color: #98c379;
+  color: #282c34;
+  border-color: #98c379;
 }
 
 /* Override pre styles inside wrapper */
@@ -316,12 +320,33 @@
   margin: 0 !important;
   border-radius: 0 !important;
   border: none !important;
+  background-color: #282c34 !important;
 }
 
-/* Highlight.js overrides */
+/* Highlight.js code styles */
 .rich-text pre code.hljs {
-  padding: 1.25rem;
+  display: block;
+  padding: 1.25rem !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace !important;
+  overflow-x: auto;
+  background-color: #282c34 !important;
+}
+
+/* Force pre tag background */
+.rich-text pre {
+  background-color: #282c34 !important;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Inline code */
+.rich-text code:not(.hljs) {
+  background-color: #1e1e2e;
+  color: #7dd3fc;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
   font-size: 0.875rem;
-  line-height: 1.7;
-  font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', monospace;
+  font-family: monospace;
 }

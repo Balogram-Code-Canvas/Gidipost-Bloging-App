@@ -10,7 +10,7 @@ import toast from 'react-hot-toast'
 import '../styles/richtext.css'
 import SEO from '../components/SEO'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/github-dark.css'
+import 'highlight.js/styles/atom-one-dark.css'
 
 const Blog = () => {
 
@@ -65,56 +65,103 @@ const Blog = () => {
     }
   }
 
-  // ✅ Apply syntax highlighting and add copy buttons
+  // ✅ Fixed highlighting function
   const applyHighlighting = () => {
-    // Find all code blocks
-    const codeBlocks = document.querySelectorAll('.rich-text pre code')
+    const richText = document.querySelector('.rich-text')
+    if (!richText) return
 
-    codeBlocks.forEach((block) => {
-      // Apply highlight.js
-      hljs.highlightElement(block)
+    // ✅ Target ALL pre tags whether they have code inside or not
+    const preTags = richText.querySelectorAll('pre')
 
-      const pre = block.parentElement
+    preTags.forEach((pre) => {
 
-      // Avoid adding duplicate copy buttons
-      if (pre.querySelector('.copy-btn')) return
+      // Avoid duplicate processing
+      if (pre.classList.contains('hljs-processed')) return
+      pre.classList.add('hljs-processed')
 
-      // Create copy button
-      const button = document.createElement('button')
-      button.innerText = 'Copy'
-      button.className = 'copy-btn'
+      // ✅ Get the code content
+      let codeEl = pre.querySelector('code')
 
-      button.addEventListener('click', () => {
-        navigator.clipboard.writeText(block.innerText).then(() => {
-          button.innerText = 'Copied!'
-          button.classList.add('copied')
-          setTimeout(() => {
-            button.innerText = 'Copy'
-            button.classList.remove('copied')
-          }, 2000)
-        })
-      })
+      // ✅ If no <code> tag exists wrap content in one
+      if (!codeEl) {
+        const content = pre.innerHTML
+        pre.innerHTML = ''
+        codeEl = document.createElement('code')
+        codeEl.innerHTML = content
+        pre.appendChild(codeEl)
+      }
 
-      // Wrap pre in a container
+      // ✅ Apply highlight.js
+      hljs.highlightElement(codeEl)
+
+      // ✅ Get detected language
+      const language = codeEl.result?.language || 
+                       codeEl.className.replace('language-', '').replace('hljs', '').trim() || 
+                       'code'
+
+      // ✅ Avoid adding duplicate wrapper
+      if (pre.parentElement.classList.contains('code-block-wrapper')) return
+
+      // ✅ Create wrapper
       const wrapper = document.createElement('div')
       wrapper.className = 'code-block-wrapper'
 
-      // Create header bar
+      // ✅ Create header
       const header = document.createElement('div')
       header.className = 'code-block-header'
 
-      // Get language from highlight.js
-      const language = block.result?.language || 'code'
+      // ✅ Language label
       const langLabel = document.createElement('span')
       langLabel.className = 'code-lang'
       langLabel.innerText = language
 
+      // ✅ Copy button
+      const copyBtn = document.createElement('button')
+      copyBtn.innerText = 'Copy'
+      copyBtn.className = 'copy-btn'
+
+      copyBtn.addEventListener('click', () => {
+        const codeToCopy = codeEl.innerText
+        navigator.clipboard.writeText(codeToCopy).then(() => {
+          copyBtn.innerText = '✅ Copied!'
+          copyBtn.classList.add('copied')
+          setTimeout(() => {
+            copyBtn.innerText = 'Copy'
+            copyBtn.classList.remove('copied')
+          }, 2000)
+        }).catch(() => {
+          // Fallback for browsers that don't support clipboard API
+          const textArea = document.createElement('textarea')
+          textArea.value = codeEl.innerText
+          document.body.appendChild(textArea)
+          textArea.select()
+          document.execCommand('copy')
+          document.body.removeChild(textArea)
+          copyBtn.innerText = '✅ Copied!'
+          setTimeout(() => copyBtn.innerText = 'Copy', 2000)
+        })
+      })
+
+      // ✅ Also highlight inline code elements
       header.appendChild(langLabel)
-      header.appendChild(button)
+      header.appendChild(copyBtn)
 
       pre.parentNode.insertBefore(wrapper, pre)
       wrapper.appendChild(header)
       wrapper.appendChild(pre)
+    })
+
+    // ✅ Also highlight inline code tags
+    const inlineCodes = richText.querySelectorAll('code:not(.hljs)')
+    inlineCodes.forEach((code) => {
+      if (!code.closest('pre')) {
+        code.style.backgroundColor = '#1e1e2e'
+        code.style.color = '#7dd3fc'
+        code.style.padding = '0.15rem 0.4rem'
+        code.style.borderRadius = '4px'
+        code.style.fontSize = '0.875rem'
+        code.style.fontFamily = 'monospace'
+      }
     })
   }
 
@@ -123,13 +170,12 @@ const Blog = () => {
     fetchComments()
   }, [id])
 
-  // ✅ Run highlighting after blog data loads
+  // ✅ Run after data loads with longer delay to ensure DOM is ready
   useEffect(() => {
     if (data) {
-      // Small delay to ensure DOM is updated
       setTimeout(() => {
         applyHighlighting()
-      }, 100)
+      }, 300)
     }
   }, [data])
 
@@ -152,7 +198,6 @@ const Blog = () => {
 
       <Navbar />
 
-      {/* Blog Header */}
       <div className='text-center mt-20 text-gray-600 dark:text-gray-400'>
         <p className='text-primary py-4 font-medium'>
           Published on {moment(data.createdAt).format('MMMM Do YYYY')}
@@ -169,15 +214,8 @@ const Blog = () => {
       </div>
 
       <div className='mx-5 max-w-5xl md:mx-auto my-10 mt-6'>
+        <img src={data.image} alt="blog" className='rounded-3xl mb-5 w-full' />
 
-        {/* Blog Image */}
-        <img
-          src={data.image}
-          alt="blog"
-          className='rounded-3xl mb-5 w-full'
-        />
-
-        {/* Blog Content */}
         <div
           className='rich-text max-w-3xl mx-auto'
           dangerouslySetInnerHTML={{ __html: data.description }}
@@ -273,7 +311,6 @@ const Blog = () => {
             </a>
           </div>
         </div>
-
       </div>
 
       <Footer />
