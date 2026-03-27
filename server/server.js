@@ -7,7 +7,10 @@ import blogRouter from './routes/blogRoutes.js'
 
 const app = express()
 
-// ✅ Fix CORS
+// ✅ Connect DB
+connectDB()
+
+// ✅ CORS
 app.use(cors({
   origin: [
     'https://gidipost-bloging-app.vercel.app',
@@ -24,24 +27,14 @@ app.options('*', cors())
 app.use(express.json())
 
 // Routes
-app.get('/', (req, res) => res.send("API is Working"))
+app.get('/', (req, res) => res.send('API is Working'))
 app.use('/api/admin', adminRouter)
 app.use('/api/blog', blogRouter)
 
-// ✅ Connect DB and start server
-const startServer = async () => {
-  try {
-    await connectDB()
-    const PORT = process.env.PORT || 3000
-    app.listen(PORT, () => {
-      console.log('Server is running on port ' + PORT)
-    })
-  } catch (error) {
-    console.error('Failed to start server:', error)
-    process.exit(1)
-  }
-}
+const PORT = process.env.PORT || 3000
 
-startServer()
+app.listen(PORT, () => {
+  console.log('Server is running on port ' + PORT)
+})
 
 export default app
