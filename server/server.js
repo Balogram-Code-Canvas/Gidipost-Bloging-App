@@ -1,30 +1,41 @@
 import express from 'express'
 import 'dotenv/config'
 import cors from 'cors'
-import connectDB from './configs/db.js';
-import adminRouter from './routes/adminRoutes.js';
-import blogRouter from './routes/blogRoutes.js';
-import { setServers } from "node:dns/promises";
-setServers(["1.1.1.1", "8.8.8.8"]);
+import connectDB from './configs/db.js'
+import adminRouter from './routes/adminRoutes.js'
+import blogRouter from './routes/blogRoutes.js'
+import newsletterRouter from './routes/newsletterRoutes.js'
 
-
-const app = express();
+const app = express()
 
 await connectDB()
 
-// Middleware
-app.use(cors())
+// ✅ Fix CORS - allow your frontend URL
+app.use(cors({
+  origin: [
+    'https://gidipost-bloging-app.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}))
+
+// ✅ Handle preflight requests
+app.options('*', cors())
+
 app.use(express.json())
 
 // Routes
-app.get('/', (req, res)=> res.send("API is Working"))
+app.get('/', (req, res) => res.send('API is Working'))
 app.use('/api/admin', adminRouter)
 app.use('/api/blog', blogRouter)
+app.use('/api/newsletter', newsletterRouter)
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, ()=>{
-    console.log('Server is running on port ' + PORT)
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`)
 })
 
-export default app;
+export default app
