@@ -2,6 +2,9 @@ import express from "express";
 import { addBlog, addComment, deleteBlogById, generateContent, getAllBlogs, getBlogById, getBlogComments, togglePublish } from "../controllers/blogController.js";
 import upload from "../middleware/multer.js";
 import auth from "../middleware/auth.js";
+import { updateBlog } from '../controllers/blogController.js'
+
+router.put('/update/:id', auth, upload.single('image'), updateBlog)
 
 const blogRouter = express.Router();
 

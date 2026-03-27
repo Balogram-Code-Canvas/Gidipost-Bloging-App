@@ -35,3 +35,48 @@ body {
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+
+/* Fix Quill toolbar wrapping */
+.ql-toolbar.ql-snow {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 8px !important;
+  border-radius: 6px 6px 0 0 !important;
+  background-color: #f9fafb !important;
+}
+
+.ql-container.ql-snow {
+  border-radius: 0 0 6px 6px !important;
+  min-height: 200px !important;
+}
+
+/* Dark mode Quill */
+.dark .ql-toolbar.ql-snow {
+  background-color: #1e293b !important;
+  border-color: #374151 !important;
+}
+
+.dark .ql-container.ql-snow {
+  background-color: #1e293b !important;
+  border-color: #374151 !important;
+  color: #e2e8f0 !important;
+}
+
+.dark .ql-editor {
+  color: #e2e8f0 !important;
+}
+
+.dark .ql-stroke {
+  stroke: #94a3b8 !important;
+}
+
+.dark .ql-fill {
+  fill: #94a3b8 !important;
+}
+
+.dark .ql-picker-label {
+  color: #94a3b8 !important;
+}

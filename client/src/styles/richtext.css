@@ -350,3 +350,22 @@
   font-size: 0.875rem;
   font-family: monospace;
 }
+
+/* ✅ Target Quill's specific code block class */
+.rich-text pre.ql-syntax {
+  background-color: #282c34 !important;
+  color: #abb2bf !important;
+  padding: 1rem !important;
+  border-radius: 8px !important;
+  overflow-x: auto !important;
+  font-family: monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* ✅ Dark mode Quill syntax */
+.dark .rich-text pre.ql-syntax {
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
+}

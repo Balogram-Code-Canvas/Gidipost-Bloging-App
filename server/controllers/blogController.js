@@ -128,3 +128,45 @@ export const generateContent = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 }
+
+export const updateBlog = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { title, subTitle, description, category, isPublished } = JSON.parse(req.body.blog)
+
+        const updateData = {
+            title,
+            subTitle,
+            description,
+            category,
+            isPublished
+        }
+
+        // ✅ Only update image if a new one was uploaded
+        if (req.file) {
+            const fileBuffer = fs.readFileSync(req.file.path)
+            const response = await imagekit.upload({
+                file: fileBuffer,
+                fileName: req.file.originalname,
+                folder: '/blogImages/'
+            })
+
+            const optimizedImageURL = imagekit.url({
+                path: response.filePath,
+                transformation: [
+                    { quality: 'auto' },
+                    { format: 'webp' },
+                    { width: '1280' }
+                ]
+            })
+
+            updateData.image = optimizedImageURL
+        }
+
+        await Blog.findByIdAndUpdate(id, updateData)
+        res.json({ success: true, message: 'Blog updated successfully' })
+
+    } catch (error) {
+        res.json({ success: false, message: error.message })
+    }
+}

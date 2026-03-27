@@ -172,12 +172,19 @@ const Blog = () => {
 
   // ✅ Run after data loads with longer delay to ensure DOM is ready
   useEffect(() => {
-    if (data) {
-      setTimeout(() => {
-        applyHighlighting()
-      }, 300)
-    }
-  }, [data])
+  if (data) {
+    setTimeout(() => {
+      // ✅ Add this to see what HTML Quill generated
+      const richText = document.querySelector('.rich-text')
+      if (richText) {
+        console.log('Rich text HTML:', richText.innerHTML)
+        console.log('Pre tags found:', richText.querySelectorAll('pre').length)
+        console.log('Code tags found:', richText.querySelectorAll('code').length)
+      }
+      applyHighlighting()
+    }, 300)
+  }
+}, [data])
 
   return data ? (
     <div className='relative bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300'>

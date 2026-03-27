@@ -17,6 +17,7 @@ import { useAppContext } from './context/AppContext'
 import { trackPageView } from './analytics'
 import 'quill/dist/quill.snow.css'
 import './styles/richtext.css'
+import EditBlog from './pages/admin/EditBlog'
 
 const App = () => {
 
@@ -47,6 +48,7 @@ const App = () => {
           <Route path='addBlog' element={<AddBlog />} />
           <Route path='listBlog' element={<ListBlog />} />
           <Route path='comments' element={<Comments />} />
+          <Route path='editBlog/:id' element={<EditBlog />} />
         </Route>
 
       </Routes>

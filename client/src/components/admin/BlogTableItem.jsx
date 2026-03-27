@@ -2,8 +2,11 @@ import React from 'react'
 import { assets } from '../../assets/assets';
 import { useAppContext } from '../../context/AppContext';
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
-const BlogTableItem = ({blog, fetchBlogs, index}) => {
+
+const BlogTableItem = ({ blog, fetchBlogs, index }) => {
+  const navigate = useNavigate()
 
   const {title, createdAt} = blog;
   const BlogDate  = new Date(createdAt)
@@ -52,6 +55,12 @@ const BlogTableItem = ({blog, fetchBlogs, index}) => {
         </td>
 
       <td className='px-2 py-4 flex text-xs gap-3'>
+        <button
+          onClick={() => navigate(`/admin/editBlog/${blog._id}`)}
+          className='text-xs border border-blue-400 text-blue-500 px-3 py-1 rounded-full hover:bg-blue-50 transition-all'
+        >
+          Edit
+        </button>
         <button onClick={togglePublish} className='border px-2 py-0.5 mt-1 rounded cursor-pointer'>{blog.isPublished ? 'Unpublish' : 'Publish'}</button>
         <img src={assets.cross_icon} className='w-8 hover:scale-10 transition-all cursor-pointer' alt="" onClick={deleteBlog}/>
       </td>
