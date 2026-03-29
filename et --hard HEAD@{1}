@@ -1,0 +1,22 @@
+[33me176ca0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~11
+[33m196cc6c[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mbackup-before-reset[m[33m)[m HEAD@{1}: commit: Fixed server.js for Vercel deployment
+[33mebb9b43[m HEAD@{2}: commit: Downgraded Express to 4.18.2 to fix path-to-regexp error
+[33m2f66ce0[m HEAD@{3}: commit: Fixed blogRoutes router declaration and CORS config
+[33m86ed524[m HEAD@{4}: commit: fix update
+[33mcce36fb[m HEAD@{5}: commit: Fixed CORS policy and toast import
+[33mc57274c[m HEAD@{6}: commit: new updates
+[33m7702984[m HEAD@{7}: commit: Fixed EditBlog description loading and AddBlog toolbar alignment
+[33mba63481[m HEAD@{8}: commit: Fixed syntax highlighting for all code blocks
+[33m8140eff[m HEAD@{9}: commit: Added syntax highlighting and copy button for code blocks
+[33m6cddc47[m HEAD@{10}: commit: new update
+[33mde8e6d0[m HEAD@{11}: commit: Hide login button on all public pages
+[33me176ca0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{12}: commit: Fixed AddBlog form reset - subtitle and all fields now clear after submission
+[33md4ac905[m HEAD@{13}: commit: Updated OG tags for WhatsApp and social media sharing
+[33m7286838[m HEAD@{14}: commit: Fixed SEO placement on all pages
+[33m600943b[m HEAD@{15}: commit: Added Google Analytics page view tracking
+[33me724762[m HEAD@{16}: commit: Fixed mobile category dropdown and blog spacing
+[33m9c8e1c8[m HEAD@{17}: commit: Added vercel.json and updated VITE_BASE_URL for frontend deployment
+[33me085c13[m HEAD@{18}: commit: Updated styling, fixed subtitle truncation and spacing
+[33mec6bb7c[m HEAD@{19}: commit: Added .gitignore, removed .env from tracking, updated branding
+[33m6b304f4[m HEAD@{20}: Branch: renamed refs/heads/master to refs/heads/main
+[33m6b304f4[m HEAD@{22}: commit (initial): Initial commit - Gidipost-Blog-App
