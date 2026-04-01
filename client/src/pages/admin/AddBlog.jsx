@@ -22,7 +22,6 @@ const AddBlog = () => {
 
   const generateContent = async () => {
     if (!title) return toast.error('Please enter a title')
-
     try {
       setLoading(true)
       const { data } = await axios.post('/api/blog/generate', { prompt: title })
@@ -43,7 +42,6 @@ const AddBlog = () => {
     try {
       setIsAdding(true)
 
-      // Clean up Quill content
       const content = quillRef.current.root.innerHTML
       const cleanContent = content
         .replace(/<p><br><\/p>/g, '')
@@ -66,15 +64,12 @@ const AddBlog = () => {
 
       if (data.success) {
         toast.success(data.message)
-
-        // ✅ Reset ALL fields including subTitle
         setImage(false)
         setTitle('')
-        setSubTitle('')        // ✅ This was missing
+        setSubTitle('')
         setCategory('Tech News')
         setIsPublished(false)
         quillRef.current.root.innerHTML = ''
-
       } else {
         toast.error(data.message)
       }
@@ -87,101 +82,187 @@ const AddBlog = () => {
 
   useEffect(() => {
     if (!quillRef.current && editorRef.current) {
-      quillRef.current = new Quill(editorRef.current, { theme: 'snow' })
+      quillRef.current = new Quill(editorRef.current, {
+        theme: 'snow',
+        modules: {
+          toolbar: {
+            container: [
+              [{ header: [1, 2, 3, 4, 5, 6, false] }],
+              ['bold', 'italic', 'underline', 'strike'],
+              [{ list: 'ordered' }, { list: 'bullet' }],
+              [{ indent: '-1' }, { indent: '+1' }],
+              ['blockquote', 'code-block'],
+              ['link'],
+              ['clean']
+            ]
+          }
+        }
+      })
     }
   }, [])
 
   return (
-    <form onSubmit={onSubmitHandler} className='flex-1 bg-blue-50/50 text-gray-600 h-full overflow-scroll'>
-      <div className='bg-white w-full max-w-3xl p-4 md:p-10 sm:m-10 shadow rounded'>
+    <div className='flex-1 bg-gray-50 dark:bg-gray-900 overflow-y-auto'>
+      <form onSubmit={onSubmitHandler}>
+        <div className='max-w-3xl mx-auto py-8 px-4 sm:px-8'>
 
-        <p>Upload Thumbnail</p>
-        <label htmlFor="image">
-          <img
-            src={!image ? assets.upload_area : URL.createObjectURL(image)}
-            alt=""
-            className='mt-2 h-16 rounded cursor-pointer'
-          />
-          <input
-            onChange={(e) => setImage(e.target.files[0])}
-            type="file"
-            id='image'
-            hidden
-            required
-          />
-        </label>
+          <h2 className='text-xl font-semibold text-gray-700 dark:text-gray-200 mb-8'>
+            Add New Blog Post
+          </h2>
 
-        <p className='mt-4'>Blog Title</p>
-        <input
-          type="text"
-          placeholder='Type here'
-          required
-          className='w-full max-w-lg mt-2 p-2 border border-gray-300 outline-none rounded'
-          onChange={e => setTitle(e.target.value)}
-          value={title}
-        />
+          {/* Upload Thumbnail */}
+          <div className='mb-6'>
+            <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+              Upload Thumbnail
+            </label>
+            <label htmlFor="image" className='cursor-pointer'>
+              <div className='w-full max-w-xs h-40 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center hover:border-primary transition-all overflow-hidden'>
+                {image ? (
+                  <img
+                    src={URL.createObjectURL(image)}
+                    alt="thumbnail"
+                    className='w-full h-full object-cover'
+                  />
+                ) : (
+                  <div className='text-center'>
+                    <img
+                      src={assets.upload_area}
+                      alt="upload"
+                      className='w-12 mx-auto mb-2 opacity-50'
+                    />
+                    <p className='text-sm text-gray-400'>Click to upload image</p>
+                  </div>
+                )}
+              </div>
+              <input
+                onChange={(e) => setImage(e.target.files[0])}
+                type="file"
+                id='image'
+                hidden
+                required
+              />
+            </label>
+          </div>
 
-        <p className='mt-4'>Sub Title</p>
-        <input
-          type="text"
-          placeholder='Type here'
-          required
-          className='w-full max-w-lg mt-2 p-2 border border-gray-300 outline-none rounded'
-          onChange={e => setSubTitle(e.target.value)}
-          value={subTitle}   // ✅ This ensures it clears when state resets
-        />
+          {/* Blog Title */}
+          <div className='mb-5'>
+            <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+              Blog Title
+            </label>
+            <input
+              type="text"
+              placeholder='Enter blog title'
+              required
+              className='w-full p-3 border border-gray-300 dark:border-gray-600 outline-none rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 placeholder-gray-400 focus:border-primary transition-all'
+              onChange={e => setTitle(e.target.value)}
+              value={title}
+            />
+          </div>
 
-        <p className='mt-4'>Blog Description</p>
-        <div className='max-w-lg h-74 pb-16 sm:pb-10 pt-2 relative'>
-          <div ref={editorRef}></div>
-          {loading && (
-            <div className='absolute right-0 top-0 bottom-0 left-0 flex items-center justify-center bg-black/10 mt-2'>
-              <div className='w-8 h-8 rounded-full border-2 border-t-white animate-spin'></div>
+          {/* Sub Title */}
+          <div className='mb-5'>
+            <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+              Sub Title
+            </label>
+            <input
+              type="text"
+              placeholder='Enter sub title'
+              required
+              className='w-full p-3 border border-gray-300 dark:border-gray-600 outline-none rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 placeholder-gray-400 focus:border-primary transition-all'
+              onChange={e => setSubTitle(e.target.value)}
+              value={subTitle}
+            />
+          </div>
+
+          {/* Blog Description */}
+          <div className='mb-5'>
+            <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+              Blog Description
+            </label>
+            <div className='relative border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-gray-800'>
+              <div ref={editorRef} className='min-h-[300px]' />
+              {loading && (
+                <div className='absolute inset-0 flex items-center justify-center bg-black/20 z-10'>
+                  <div className='w-8 h-8 rounded-full border-2 border-t-white animate-spin' />
+                </div>
+              )}
+              <div className='border-t border-gray-200 dark:border-gray-600 p-2 flex justify-end bg-gray-50 dark:bg-gray-700'>
+                <button
+                  disabled={loading}
+                  type='button'
+                  onClick={generateContent}
+                  className='text-xs text-white bg-gray-800 dark:bg-gray-600 hover:bg-primary dark:hover:bg-primary px-4 py-1.5 rounded-md transition-all cursor-pointer disabled:opacity-50'
+                >
+                  ✨ Generate with AI
+                </button>
+              </div>
             </div>
-          )}
+          </div>
+
+          {/* Blog Category & Publish Row */}
+          <div className='flex flex-col sm:flex-row gap-5 mb-8'>
+
+            {/* Category */}
+            <div className='flex-1'>
+              <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+                Blog Category
+              </label>
+              <select
+                onChange={e => setCategory(e.target.value)}
+                value={category}
+                name="category"
+                className='w-full p-3 border border-gray-300 dark:border-gray-600 outline-none rounded-lg bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 focus:border-primary transition-all'
+              >
+                <option value="">Select Category</option>
+                {blogCategories.map((item, index) => (
+                  <option key={index} value={item}>{item}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Publish */}
+            <div className='flex-1'>
+              <label className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2'>
+                Publish Status
+              </label>
+              <div className='flex items-center gap-3 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 h-[50px]'>
+                <input
+                  type="checkbox"
+                  id='publish'
+                  checked={isPublished}
+                  className='w-4 h-4 accent-primary cursor-pointer'
+                  onChange={e => setIsPublished(e.target.checked)}
+                />
+                <label
+                  htmlFor='publish'
+                  className='text-sm text-gray-600 dark:text-gray-300 cursor-pointer'
+                >
+                  Publish immediately
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Submit Button */}
           <button
-            disabled={loading}
-            type='button'
-            onClick={generateContent}
-            className='absolute bottom-1 right-2 ml-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:underline cursor-pointer'
+            disabled={isAdding}
+            type='submit'
+            className='w-full sm:w-auto px-10 py-3 bg-primary text-white rounded-lg cursor-pointer text-sm font-medium hover:bg-primary/90 transition-all disabled:opacity-70 disabled:cursor-not-allowed'
           >
-            Generate with AI
+            {isAdding ? (
+              <span className='flex items-center gap-2'>
+                <span className='w-4 h-4 border-2 border-t-white border-white/30 rounded-full animate-spin' />
+                Adding...
+              </span>
+            ) : (
+              '+ Add Blog Post'
+            )}
           </button>
+
         </div>
-
-        <p className='mt-4'>Blog Category</p>
-        <select
-          onChange={e => setCategory(e.target.value)}
-          value={category}
-          name="category"
-          className='mt-2 px-3 py-2 border text-gray-500 border-gray-300 outline-none rounded'
-        >
-          <option value="">Select Category</option>
-          {blogCategories.map((item, index) => (
-            <option key={index} value={item}>{item}</option>
-          ))}
-        </select>
-
-        <div className='flex gap-2 mt-4'>
-          <p>Publish Now</p>
-          <input
-            type="checkbox"
-            checked={isPublished}
-            className='scale-125 cursor-pointer'
-            onChange={e => setIsPublished(e.target.checked)}
-          />
-        </div>
-
-        <button
-          disabled={isAdding}
-          type='submit'
-          className='mt-8 w-40 h-10 bg-primary text-white rounded cursor-pointer text-sm'
-        >
-          {isAdding ? 'Adding...' : 'Add Blog'}
-        </button>
-
-      </div>
-    </form>
+      </form>
+    </div>
   )
 }
 

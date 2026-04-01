@@ -35,3 +35,87 @@ body {
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* ===== QUILL EDITOR FIXES ===== */
+.ql-toolbar.ql-snow {
+  border-radius: 6px 6px 0 0 !important;
+  background-color: #f9fafb !important;
+  border-color: #e5e7eb !important;
+  padding: 8px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 2px !important;
+}
+
+.ql-container.ql-snow {
+  border-radius: 0 0 6px 6px !important;
+  border-color: #e5e7eb !important;
+  min-height: 250px !important;
+  font-size: 1rem !important;
+}
+
+.ql-editor {
+  min-height: 250px !important;
+  font-size: 1rem !important;
+  line-height: 1.75 !important;
+}
+
+/* Code block button highlight */
+.ql-code-block {
+  font-weight: bold !important;
+}
+
+/* Dark mode Quill */
+.dark .ql-toolbar.ql-snow {
+  background-color: #1e293b !important;
+  border-color: #374151 !important;
+}
+
+.dark .ql-container.ql-snow {
+  background-color: #1e293b !important;
+  border-color: #374151 !important;
+}
+
+.dark .ql-editor {
+  color: #e2e8f0 !important;
+}
+
+.dark .ql-editor.ql-blank::before {
+  color: #64748b !important;
+}
+
+.dark .ql-stroke {
+  stroke: #94a3b8 !important;
+}
+
+.dark .ql-fill {
+  fill: #94a3b8 !important;
+}
+
+.dark .ql-picker-label {
+  color: #94a3b8 !important;
+}
+
+.dark .ql-picker-options {
+  background-color: #1e293b !important;
+  border-color: #374151 !important;
+}
+
+.dark .ql-picker-item {
+  color: #94a3b8 !important;
+}
+
+.dark .ql-picker-item:hover {
+  color: #f1f5f9 !important;
+}
+
+/* Code block inside editor */
+.ql-editor pre.ql-syntax {
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
+  border-radius: 6px !important;
+  padding: 1rem !important;
+  font-family: monospace !important;
+  font-size: 0.875rem !important;
+  overflow-x: auto !important;
+}

@@ -8,7 +8,9 @@ import Loader from '../components/Loader'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
 import '../styles/richtext.css'
+import '../styles/prism-theme.css'
 import SEO from '../components/SEO'
+import CodeHighlighter from '../components/CodeHighlighter'
 
 const Blog = () => {
 
@@ -71,6 +73,9 @@ const Blog = () => {
   return data ? (
     <div className='relative bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300'>
 
+      {/* ✅ Prism.js Code Highlighter */}
+      <CodeHighlighter content={data.description} key={data._id} />
+
       <SEO
         title={data.title}
         description={data.subTitle}
@@ -87,7 +92,6 @@ const Blog = () => {
 
       <Navbar />
 
-      {/* Blog Header */}
       <div className='text-center mt-20 text-gray-600 dark:text-gray-400'>
         <p className='text-primary py-4 font-medium'>
           Published on {moment(data.createdAt).format('MMMM Do YYYY')}
@@ -104,15 +108,8 @@ const Blog = () => {
       </div>
 
       <div className='mx-5 max-w-5xl md:mx-auto my-10 mt-6'>
+        <img src={data.image} alt="blog" className='rounded-3xl mb-5 w-full' />
 
-        {/* Blog Image */}
-        <img
-          src={data.image}
-          alt="blog"
-          className='rounded-3xl mb-5 w-full'
-        />
-
-        {/* Blog Content */}
         <div
           className='rich-text max-w-3xl mx-auto'
           dangerouslySetInnerHTML={{ __html: data.description }}
@@ -208,7 +205,6 @@ const Blog = () => {
             </a>
           </div>
         </div>
-
       </div>
 
       <Footer />

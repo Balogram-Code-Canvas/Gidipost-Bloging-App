@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const { token } = useAppContext()
   const navigate = useNavigate()
-  const location = useLocation()
+ 
   const [menuOpen, setMenuOpen] = useState(false)
 
   // ✅ Hide login button on all public pages
@@ -16,14 +16,17 @@ const Navbar = () => {
   const showDashboardButton = token
 
   return (
-    <div className='relative flex justify-between items-center py-5 mx-8 sm:mx-20 xl:mx-32 bg-white dark:bg-gray-900 transition-colors duration-300'>
+    <div className="sticky top-0 z-50 w-full backdrop-blur-lg bg-white/60 dark:bg-gray-900/60 border-b border-gray-200/50 dark:border-gray-800/50 transition-all duration-300">
+  <div className="flex justify-between items-center py-5 px-6 sm:px-20 xl:px-32">
+    {/* Your content here */}
+  
 
       {/* Logo */}
       <img
         onClick={() => navigate('/')}
         src={assets.logo}
         alt="Gidipost"
-        className='w-32 sm:w-44 cursor-pointer'
+        className='w-28 sm:w-36 cursor-pointer'
       />
 
       {/* Desktop Nav Links */}
@@ -142,6 +145,7 @@ const Navbar = () => {
       )}
 
     </div>
+</div>
   )
 }
 

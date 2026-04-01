@@ -1,0 +1,210 @@
+/* ===== PRISM.JS CUSTOM THEME FOR GIDIPOST ===== */
+
+/* Code block wrapper */
+.code-block-wrapper {
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1e1e2e;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Header bar */
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: #1e1e2e;
+  border-bottom: 1px solid #313244;
+}
+
+/* Mac-style dots */
+.code-lang-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.code-lang-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.code-lang-dot:nth-child(1) { background-color: #ff5f57; }
+.code-lang-dot:nth-child(2) { background-color: #febc2e; }
+.code-lang-dot:nth-child(3) { background-color: #28c840; }
+
+.code-lang-text {
+  font-size: 0.72rem;
+  color: #6c7086;
+  font-family: monospace;
+  text-transform: lowercase;
+  margin-left: 8px;
+  letter-spacing: 0.05em;
+}
+
+/* Copy button */
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  padding: 4px 12px;
+  background-color: #313244;
+  color: #cdd6f4;
+  border: 1px solid #45475a;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: monospace;
+}
+
+.copy-btn:hover {
+  background-color: #080C5C;
+  color: #ffffff;
+  border-color: #080C5C;
+}
+
+.copy-btn.copied {
+  background-color: #a6e3a1;
+  color: #1e1e2e;
+  border-color: #a6e3a1;
+}
+
+/* Pre and code base styles */
+.code-block-wrapper pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background-color: #1e1e2e !important;
+}
+
+.code-block-wrapper pre code {
+  font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Consolas', monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  background: transparent !important;
+}
+
+/* ===== PRISM TOKEN COLORS (Catppuccin Mocha theme) ===== */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #cdd6f4;
+  background: #1e1e2e;
+  font-family: 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 0.875rem;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.7;
+  tab-size: 2;
+  hyphens: none;
+  padding: 1.25rem;
+  overflow: auto;
+  border-radius: 0;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6c7086;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: #cdd6f4;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #fab387;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a6e3a1;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #89dceb;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #cba6f7;
+}
+
+.token.function,
+.token.class-name {
+  color: #89b4fa;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #f38ba8;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+/* Inline code */
+.rich-text p code,
+.rich-text li code {
+  background-color: #313244;
+  color: #cba6f7;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: monospace;
+  border: 1px solid #45475a;
+}
+
+/* Dark mode adjustments */
+.dark .code-block-wrapper {
+  border-color: #313244;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Scrollbar styling */
+.code-block-wrapper pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.code-block-wrapper pre::-webkit-scrollbar-track {
+  background: #181825;
+}
+
+.code-block-wrapper pre::-webkit-scrollbar-thumb {
+  background: #45475a;
+  border-radius: 3px;
+}
+
+.code-block-wrapper pre::-webkit-scrollbar-thumb:hover {
+  background: #585b70;
+}
