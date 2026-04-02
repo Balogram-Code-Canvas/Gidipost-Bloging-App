@@ -120,7 +120,7 @@ const Contact = () => {
                   name='from_email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder='john@example.com'
+                  placeholder='johndeo@example.com'
                   required
                   className='border border-gray-300 dark:border-gray-600 rounded p-3 outline-none focus:border-primary transition-all bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500'
                 />

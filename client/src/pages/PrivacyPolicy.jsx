@@ -138,7 +138,7 @@ const PrivacyPolicy = () => {
             If you have any questions about this Privacy Policy, please contact us at:
           </p>
           <div className='mt-3 p-4 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-lg dark:text-gray-400'>
-            <p><b className='dark:text-gray-300'>Gidipost</b> — Balogram Code & Canvas</p>
+            <p><b className='dark:text-gray-300'>Gidipost</b> — Gidipost Admin</p>
             <p>Email: tunde.agboke@gmail.com</p>
             <p>Website: gidipost.com.ng</p>
           </div>
