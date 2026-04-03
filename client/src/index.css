@@ -36,44 +36,92 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ===== QUILL EDITOR FIXES ===== */
+/* ===== QUILL EDITOR - CLEAN FIXED HEIGHT ===== */
+
+/* Toolbar */
 .ql-toolbar.ql-snow {
-  border-radius: 6px 6px 0 0 !important;
+  border: none !important;
+  border-bottom: 1px solid #e5e7eb !important;
   background-color: #f9fafb !important;
-  border-color: #e5e7eb !important;
-  padding: 8px !important;
+  padding: 8px 12px !important;
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 2px !important;
+  border-radius: 0 !important;
 }
 
+/* ✅ Fixed height scrollable editor */
 .ql-container.ql-snow {
-  border-radius: 0 0 6px 6px !important;
-  border-color: #e5e7eb !important;
-  min-height: 250px !important;
+  border: none !important;
+  height: 450px !important;
+  overflow-y: auto !important;
   font-size: 1rem !important;
 }
 
+/* Editor content */
 .ql-editor {
-  min-height: 250px !important;
+  min-height: 450px !important;
+  padding: 16px !important;
   font-size: 1rem !important;
   line-height: 1.75 !important;
+  color: #374151 !important;
 }
 
-/* Code block button highlight */
-.ql-code-block {
-  font-weight: bold !important;
+/* Placeholder */
+.ql-editor.ql-blank::before {
+  color: #9ca3af !important;
+  font-style: normal !important;
 }
 
-/* Dark mode Quill */
+/* Custom scrollbar inside editor only */
+.ql-container::-webkit-scrollbar {
+  width: 5px !important;
+}
+
+.ql-container::-webkit-scrollbar-track {
+  background: #f8fafc !important;
+}
+
+.ql-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1 !important;
+  border-radius: 3px !important;
+}
+
+.ql-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8 !important;
+}
+
+/* Active toolbar buttons */
+.ql-toolbar button:hover .ql-stroke,
+.ql-toolbar button.ql-active .ql-stroke {
+  stroke: #080C5C !important;
+}
+
+.ql-toolbar button:hover .ql-fill,
+.ql-toolbar button.ql-active .ql-fill {
+  fill: #080C5C !important;
+}
+
+/* Code block inside editor */
+.ql-editor pre.ql-syntax {
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
+  border-radius: 6px !important;
+  padding: 1rem !important;
+  font-family: monospace !important;
+  font-size: 0.875rem !important;
+  overflow-x: auto !important;
+  margin: 0.75rem 0 !important;
+}
+
+/* ===== DARK MODE ===== */
 .dark .ql-toolbar.ql-snow {
   background-color: #1e293b !important;
-  border-color: #374151 !important;
+  border-bottom-color: #374151 !important;
 }
 
 .dark .ql-container.ql-snow {
   background-color: #1e293b !important;
-  border-color: #374151 !important;
 }
 
 .dark .ql-editor {
@@ -82,6 +130,14 @@ body {
 
 .dark .ql-editor.ql-blank::before {
   color: #64748b !important;
+}
+
+.dark .ql-container::-webkit-scrollbar-track {
+  background: #1e293b !important;
+}
+
+.dark .ql-container::-webkit-scrollbar-thumb {
+  background: #374151 !important;
 }
 
 .dark .ql-stroke {
@@ -105,172 +161,14 @@ body {
   color: #94a3b8 !important;
 }
 
-.dark .ql-picker-item:hover {
-  color: #f1f5f9 !important;
-}
-
-/* Code block inside editor */
-.ql-editor pre.ql-syntax {
-  background-color: #1e1e2e !important;
-  color: #cdd6f4 !important;
-  border-radius: 6px !important;
-  padding: 1rem !important;
-  font-family: monospace !important;
-  font-size: 0.875rem !important;
-  overflow-x: auto !important;
-}
-
-
-/* ===== QUILL FIXED HEIGHT EDITOR ===== */
-
-/* ✅ Make toolbar sticky inside the editor container */
-.quill-fixed-editor .ql-toolbar.ql-snow {
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 10 !important;
-  background-color: #f9fafb !important;
-  border: none !important;
-  border-bottom: 1px solid #e5e7eb !important;
-  padding: 8px 12px !important;
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 2px !important;
-}
-
-/* ✅ Fixed height scrollable editor area */
-.quill-fixed-editor .ql-container.ql-snow {
-  border: none !important;
-  height: 400px !important;
-  overflow-y: auto !important;
-  font-size: 1rem !important;
-}
-
-/* ✅ Editor content area */
-.quill-fixed-editor .ql-editor {
-  min-height: 400px !important;
-  padding: 16px !important;
-  font-size: 1rem !important;
-  line-height: 1.75 !important;
-  color: #374151 !important;
-}
-
-/* ✅ Placeholder text */
-.quill-fixed-editor .ql-editor.ql-blank::before {
-  color: #9ca3af !important;
-  font-style: normal !important;
-  font-size: 0.95rem !important;
-}
-
-/* ✅ Scrollbar inside editor */
-.quill-fixed-editor .ql-container::-webkit-scrollbar {
-  width: 5px !important;
-}
-
-.quill-fixed-editor .ql-container::-webkit-scrollbar-track {
-  background: #f1f5f9 !important;
-}
-
-.quill-fixed-editor .ql-container::-webkit-scrollbar-thumb {
-  background: #cbd5e1 !important;
-  border-radius: 3px !important;
-}
-
-.quill-fixed-editor .ql-container::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8 !important;
-}
-
-/* ===== DARK MODE ===== */
-.dark .quill-fixed-editor .ql-toolbar.ql-snow {
-  background-color: #1e293b !important;
-  border-bottom-color: #374151 !important;
-}
-
-.dark .quill-fixed-editor .ql-container.ql-snow {
-  background-color: #1e293b !important;
-}
-
-.dark .quill-fixed-editor .ql-editor {
-  color: #e2e8f0 !important;
-}
-
-.dark .quill-fixed-editor .ql-editor.ql-blank::before {
-  color: #64748b !important;
-}
-
-.dark .quill-fixed-editor .ql-container::-webkit-scrollbar-track {
-  background: #1e293b !important;
-}
-
-.dark .quill-fixed-editor .ql-container::-webkit-scrollbar-thumb {
-  background: #374151 !important;
-}
-
-.dark .quill-fixed-editor .ql-stroke {
-  stroke: #94a3b8 !important;
-}
-
-.dark .quill-fixed-editor .ql-fill {
-  fill: #94a3b8 !important;
-}
-
-.dark .quill-fixed-editor .ql-picker-label {
-  color: #94a3b8 !important;
-}
-
-.dark .quill-fixed-editor .ql-picker-options {
-  background-color: #1e293b !important;
-  border-color: #374151 !important;
-}
-
-.dark .quill-fixed-editor .ql-picker-item {
-  color: #94a3b8 !important;
-}
-
-.dark .quill-fixed-editor .ql-picker-item:hover {
-  color: #f1f5f9 !important;
-}
-
-/* ✅ Code block inside editor */
-.quill-fixed-editor .ql-editor pre.ql-syntax {
-  background-color: #1e1e2e !important;
-  color: #cdd6f4 !important;
-  border-radius: 6px !important;
-  padding: 1rem !important;
-  font-family: monospace !important;
-  font-size: 0.875rem !important;
-  overflow-x: auto !important;
-  margin: 0.75rem 0 !important;
-}
-
-/* ✅ Toolbar button active state */
-.quill-fixed-editor .ql-toolbar button:hover,
-.quill-fixed-editor .ql-toolbar button.ql-active {
-  color: #080C5C !important;
-}
-
-.quill-fixed-editor .ql-toolbar button:hover .ql-stroke,
-.quill-fixed-editor .ql-toolbar button.ql-active .ql-stroke {
-  stroke: #080C5C !important;
-}
-
-.quill-fixed-editor .ql-toolbar button:hover .ql-fill,
-.quill-fixed-editor .ql-toolbar button.ql-active .ql-fill {
-  fill: #080C5C !important;
-}
-
-/* ✅ Mobile responsive */
+/* ===== MOBILE ===== */
 @media (max-width: 640px) {
-  .quill-fixed-editor .ql-container.ql-snow {
+  .ql-container.ql-snow {
     height: 300px !important;
   }
 
-  .quill-fixed-editor .ql-editor {
+  .ql-editor {
     min-height: 300px !important;
-    padding: 12px !important;
     font-size: 0.9rem !important;
-  }
-
-  .quill-fixed-editor .ql-toolbar.ql-snow {
-    padding: 6px 8px !important;
   }
 }
