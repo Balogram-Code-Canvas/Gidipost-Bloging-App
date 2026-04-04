@@ -208,3 +208,16 @@ pre[class*="language-"] {
 .code-block-wrapper pre::-webkit-scrollbar-thumb:hover {
   background: #585b70;
 }
+
+/* ✅ Override ql-syntax default ugly styling */
+.rich-text pre.ql-syntax {
+  background-color: #1e1e2e !important;
+  color: #cdd6f4 !important;
+  border-radius: 0 !important;
+  padding: 1.25rem !important;
+  margin: 0 !important;
+  overflow-x: auto !important;
+  font-family: 'Fira Code', 'Consolas', monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+}
