@@ -4,11 +4,12 @@ import cors from 'cors'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import mongoSanitize from 'express-mongo-sanitize'
-import xss from 'xss-clean'
 import connectDB from './configs/db.js'
 import adminRouter from './routes/adminRoutes.js'
 import blogRouter from './routes/blogRoutes.js'
 import newsletterRouter from './routes/newsletterRoutes.js'
+import { setServers } from "node:dns/promises";
+setServers(["1.1.1.1", "8.8.8.8"]);
 
 const app = express()
 
@@ -17,7 +18,7 @@ await connectDB()
 // ✅ 1. Secure HTTP headers
 app.use(helmet())
 
-// ✅ 2. CORS — only your real frontend
+// ✅ 2. CORS
 const allowedOrigins = [
   'https://gidipost-bloging-app.vercel.app',
   'https://gidipost.com.ng',
@@ -43,10 +44,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 // ✅ 4. Prevent NoSQL injection
 app.use(mongoSanitize())
 
-// ✅ 5. Prevent XSS via API body
-app.use(xss())
-
-// ✅ 6. General rate limiter — 100 requests per 15 min per IP
+// ✅ 5. General rate limiter
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
@@ -56,14 +54,14 @@ const generalLimiter = rateLimit({
 })
 app.use(generalLimiter)
 
-// ✅ 7. Strict rate limiter for login — 10 attempts per 15 min
+// ✅ 6. Login rate limiter
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 10,
   message: { success: false, message: 'Too many login attempts, please try again later.' },
 })
 
-// ✅ 8. Routes
+// ✅ 7. Routes
 app.get('/', (req, res) => res.send('API is Working'))
 app.use('/api/admin/login', loginLimiter)
 app.use('/api/admin', adminRouter)
