@@ -7,7 +7,6 @@ import mongoSanitize from 'express-mongo-sanitize'
 import connectDB from './configs/db.js'
 import adminRouter from './routes/adminRoutes.js'
 import blogRouter from './routes/blogRoutes.js'
-import newsletterRouter from './routes/newsletterRoutes.js'
 import { setServers } from "node:dns/promises";
 setServers(["1.1.1.1", "8.8.8.8"]);
 
@@ -66,7 +65,6 @@ app.get('/', (req, res) => res.send('API is Working'))
 app.use('/api/admin/login', loginLimiter)
 app.use('/api/admin', adminRouter)
 app.use('/api/blog', blogRouter)
-app.use('/api/newsletter', newsletterRouter)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log('Server running on port ' + PORT))
