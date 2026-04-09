@@ -15,7 +15,7 @@ import CodeHighlighter from '../components/CodeHighlighter'
 const Blog = () => {
 
   const { id } = useParams()
-  const { axios } = useAppContext()
+  const { axios, theme } = useAppContext()
 
   const [data, setData] = useState(null)
   const [comments, setComments] = useState([])
@@ -73,9 +73,6 @@ const Blog = () => {
   return data ? (
     <div className='relative bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300'>
 
-      {/* ✅ Prism.js Code Highlighter */}
-      <CodeHighlighter content={data.description} key={data._id} />
-
       <SEO
         title={data.title}
         description={data.subTitle}
@@ -110,10 +107,14 @@ const Blog = () => {
       <div className='mx-5 max-w-5xl md:mx-auto my-10 mt-6'>
         <img src={data.image} alt="blog" className='rounded-3xl mb-5 w-full' />
 
+        {/* ✅ Blog content */}
         <div
           className='rich-text max-w-3xl mx-auto'
           dangerouslySetInnerHTML={{ __html: data.description }}
         />
+
+        {/* ✅ CodeHighlighter MUST be after rich-text div */}
+        <CodeHighlighter content={data.description} theme={theme} />
 
         {/* Comments Section */}
         <div className='mt-14 mb-10 max-w-3xl mx-auto'>
@@ -153,6 +154,8 @@ const Blog = () => {
             className='flex flex-col items-start gap-4 max-w-lg'
           >
             <input
+              id="comment-name"
+              name="name"
               onChange={(e) => setName(e.target.value)}
               value={name}
               type="text"
@@ -161,6 +164,8 @@ const Blog = () => {
               className='w-full p-2 border border-gray-300 dark:border-gray-600 rounded outline-none bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500'
             />
             <textarea
+              id="comment-content"
+              name="content"
               onChange={(e) => setContent(e.target.value)}
               value={content}
               placeholder='Comment'

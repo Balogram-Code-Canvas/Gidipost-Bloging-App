@@ -31,7 +31,6 @@ const CodeHighlighter = ({ content }) => {
     return () => clearTimeout(timer)
   }, [content])
 
-  // ✅ Decode HTML entities from Quill
   const decodeHtml = (html) => {
     const txt = document.createElement('textarea')
     txt.innerHTML = html
@@ -42,13 +41,39 @@ const CodeHighlighter = ({ content }) => {
     const richText = document.querySelector('.rich-text')
     if (!richText) return
 
-    // ✅ Case 1: Quill ql-syntax blocks - MOST IMPORTANT
+    // ✅ Case 0: Quill div-based code blocks (ql-code-block-container)
+    const qlDivBlocks = richText.querySelectorAll('.ql-code-block-container:not([data-highlighted])')
+    qlDivBlocks.forEach((container) => {
+      container.dataset.highlighted = 'true'
+
+      const lines = container.querySelectorAll('.ql-code-block')
+      const rawCode = Array.from(lines).map(l => l.innerText).join('\n').trim()
+      if (!rawCode) return
+
+      const detected = detectLanguage(rawCode)
+
+      const pre = document.createElement('pre')
+      const codeEl = document.createElement('code')
+      codeEl.className = `language-${detected}`
+      codeEl.textContent = rawCode
+      pre.appendChild(codeEl)
+
+      try {
+        Prism.highlightElement(codeEl)
+      } catch (err) {
+        console.warn('Prism error:', err.message)
+      }
+
+      container.replaceWith(pre)
+      wrapWithCopyButton(pre, codeEl, detected)
+    })
+
+    // ✅ Case 1: Quill ql-syntax blocks
     const qlBlocks = richText.querySelectorAll('pre.ql-syntax')
     qlBlocks.forEach((pre) => {
       if (pre.dataset.highlighted) return
       pre.dataset.highlighted = 'true'
 
-      // ✅ Get raw text and decode HTML entities
       const rawCode = decodeHtml(pre.innerHTML)
         .replace(/<br\s*\/?>/gi, '\n')
         .replace(/<[^>]+>/g, '')
@@ -56,7 +81,6 @@ const CodeHighlighter = ({ content }) => {
 
       const detected = detectLanguage(rawCode)
 
-      // ✅ Create code element
       const codeEl = document.createElement('code')
       codeEl.className = `language-${detected}`
       codeEl.textContent = rawCode
@@ -146,13 +170,11 @@ const CodeHighlighter = ({ content }) => {
       swift: [/func\s+\w+\s*\(/, /var\s+\w+\s*:/, /print\s*\(/, /import\s+UIKit/],
     }
 
-    // Score each language
     const scores = {}
     for (const [lang, langPatterns] of Object.entries(patterns)) {
       scores[lang] = langPatterns.filter(p => p.test(code)).length
     }
 
-    // Get highest score
     const best = Object.entries(scores).sort((a, b) => b[1] - a[1])[0]
     if (best && best[1] >= 1) return best[0]
 
